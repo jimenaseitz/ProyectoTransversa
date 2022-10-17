@@ -2,7 +2,7 @@
 
 <ClassDiagram name="UMLProyectoTransversal">
   <ClassDiagramComponents>
-    <Class name="Alumno" package="" visibility="public" xPosition="343.0" yPosition="237.0">
+    <Class name="Alumno" package="Entidades" visibility="public" xPosition="343.0" yPosition="237.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="apellido" type="String" visibility="private"/>
@@ -16,7 +16,7 @@
         <Method name="inscripcionMateria" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Universidad" package="" visibility="public" xPosition="201.0" yPosition="39.0">
+    <Class name="Universidad" package="Entidades" visibility="public" xPosition="201.0" yPosition="39.0">
       <Fields>
         <Field name="materia" type="Materia" visibility="private"/>
         <Field name="alumno" type="Alumno" visibility="private"/>
@@ -24,7 +24,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Matreria" package="" visibility="public" xPosition="343.0" yPosition="39.0">
+    <Class name="Matreria" package="Entidades" visibility="public" xPosition="343.0" yPosition="39.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="anio" type="int" visibility="private"/>
@@ -34,7 +34,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Inscripcion" package="" visibility="public" xPosition="129.0" yPosition="237.0">
+    <Class name="Inscripcion" package="Entidades" visibility="public" xPosition="129.0" yPosition="237.0">
       <Fields>
         <Field name="id_materia" type="int" visibility="private"/>
         <Field name="nombre" type="string" visibility="private"/>
