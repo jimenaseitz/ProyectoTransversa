@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Entidades">
+  <ClassDiagramComponents>
+    <Class name="Alumno" package="Entidades" visibility="public" xPosition="241.0" yPosition="305.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="dni" type="float" visibility="private"/>
+        <Field name="id_alumno" type="int" visibility="private"/>
+        <Field name="fecha" type="LocalDateTime" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="float" name="dni"/>
+          <Argument type="int" name="id_alumno"/>
+          <Argument type="LocalDateTime" name="fecha"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="float" name="dni"/>
+          <Argument type="LocalDateTime" name="fecha"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getApellido" returnType="String" visibility="public"/>
+        <Method name="setApellido" returnType="void" visibility="public">
+          <Argument type="String" name="apellido"/>
+        </Method>
+        <Method name="getDni" returnType="float" visibility="public"/>
+        <Method name="setDni" returnType="void" visibility="public">
+          <Argument type="float" name="dni"/>
+        </Method>
+        <Method name="getId_alumno" returnType="int" visibility="public"/>
+        <Method name="getFecha" returnType="LocalDateTime" visibility="public"/>
+        <Method name="setFecha" returnType="void" visibility="public">
+          <Argument type="LocalDateTime" name="fecha"/>
+        </Method>
+        <Method name="isEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Inscripcion" package="Entidades" visibility="public" xPosition="921.0" yPosition="88.0">
+      <Fields>
+        <Field name="id_materia" type="int" visibility="private"/>
+        <Field name="id_alumno" type="int" visibility="private"/>
+        <Field name="anio" type="int" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="id_materia"/>
+          <Argument type="int" name="id_alumno"/>
+          <Argument type="int" name="anio"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getId_materia" returnType="int" visibility="public"/>
+        <Method name="getId_alumno" returnType="int" visibility="public"/>
+        <Method name="getAnio" returnType="int" visibility="public"/>
+        <Method name="isEstado" returnType="boolean" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Matreria" package="Entidades" visibility="public" xPosition="1412.0" yPosition="349.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="anio" type="int" visibility="private"/>
+        <Field name="id_materia" type="int" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="anio"/>
+          <Argument type="int" name="id_materia"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="anio"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getAnio" returnType="int" visibility="public"/>
+        <Method name="setAnio" returnType="void" visibility="public">
+          <Argument type="int" name="anio"/>
+        </Method>
+        <Method name="getId_materia" returnType="int" visibility="public"/>
+        <Method name="isEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="id_alumno" source="Entidades.Inscripcion" target="Entidades.Alumno" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="id_materia" source="Entidades.Inscripcion" target="Entidades.Matreria" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

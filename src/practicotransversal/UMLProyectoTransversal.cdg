@@ -2,7 +2,7 @@
 
 <ClassDiagram name="UMLProyectoTransversal">
   <ClassDiagramComponents>
-    <Class name="Alumno" package="" visibility="public" xPosition="429.0" yPosition="218.0">
+    <Class name="Alumno" package="Entidades" visibility="public" xPosition="773.0" yPosition="160.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="apellido" type="String" visibility="private"/>
@@ -12,9 +12,7 @@
         <Field name="estado" type="boolean" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods>
-        <Method name="inscripcionMateria" returnType="void" visibility="public"/>
-      </Methods>
+      <Methods/>
     </Class>
     <Class name="Universidad" package="" visibility="public" xPosition="109.0" yPosition="39.0">
       <Fields>
@@ -24,7 +22,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Matreria" package="" visibility="public" xPosition="343.0" yPosition="39.0">
+    <Class name="Matreria" package="Entidades" visibility="public" xPosition="167.0" yPosition="179.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="anio" type="int" visibility="private"/>
@@ -34,10 +32,10 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Inscripcion" package="" visibility="public" xPosition="129.0" yPosition="237.0">
+    <Class name="Inscripcion" package="Entidades" visibility="public" xPosition="507.0" yPosition="40.0">
       <Fields>
         <Field name="id_materia" type="int" visibility="private"/>
-        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="id_alumno" type="int" visibility="private"/>
         <Field name="anio" type="int" visibility="private"/>
         <Field name="estado" type="boolean" visibility="private"/>
       </Fields>
@@ -47,5 +45,8 @@
       </Methods>
     </Class>
   </ClassDiagramComponents>
-  <ClassDiagramRelations/>
+  <ClassDiagramRelations>
+    <HasRelation name="id_materia" source="Entidades.Inscripcion" target="Entidades.Matreria" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="id_alumno" source="Entidades.Inscripcion" target="Entidades.Alumno" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
 </ClassDiagram>
