@@ -2,19 +2,21 @@
 
 <ClassDiagram name="UMLProyectoTransversal">
   <ClassDiagramComponents>
-    <Class name="Alumno" package="" visibility="public" xPosition="405.0" yPosition="283.0">
+    <Class name="Alumno" package="" visibility="public" xPosition="343.0" yPosition="237.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="apellido" type="String" visibility="private"/>
-        <Field name="dni" type="int" visibility="private"/>
-        <Field name="sexo" type="String" visibility="private"/>
+        <Field name="dni" type="float" visibility="private"/>
+        <Field name="id_alumno" type="int" visibility="private"/>
+        <Field name="fecha" type="date" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods>
         <Method name="inscripcionMateria" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Universidad" package="" visibility="public" xPosition="215.0" yPosition="89.0">
+    <Class name="Universidad" package="" visibility="public" xPosition="201.0" yPosition="39.0">
       <Fields>
         <Field name="materia" type="Materia" visibility="private"/>
         <Field name="alumno" type="Alumno" visibility="private"/>
@@ -22,14 +24,27 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Matreria" package="" visibility="public" xPosition="451.0" yPosition="79.0">
+    <Class name="Matreria" package="" visibility="public" xPosition="343.0" yPosition="39.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
-        <Field name="codigo" type="int" visibility="private"/>
-        <Field name="ano" type="int" visibility="private"/>
+        <Field name="anio" type="int" visibility="private"/>
+        <Field name="id_materia" type="int" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
+    </Class>
+    <Class name="Inscripcion" package="" visibility="public" xPosition="129.0" yPosition="237.0">
+      <Fields>
+        <Field name="id_materia" type="int" visibility="private"/>
+        <Field name="nombre" type="string" visibility="private"/>
+        <Field name="anio" type="int" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+      </Methods>
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations/>
