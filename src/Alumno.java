@@ -1,7 +1,3 @@
-package Entidades;
-
-import java.time.LocalDateTime;
-
 public class Alumno {
 
     private String nombre;

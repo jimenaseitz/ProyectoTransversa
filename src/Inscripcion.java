@@ -1,10 +1,8 @@
-package Entidades;
-
 public class Inscripcion {
 
     private int id_materia;
 
-    private String nombre;
+    private string nombre;
 
     private int anio;
 
