@@ -8,7 +8,7 @@
         <Field name="apellido" type="String" visibility="private"/>
         <Field name="dni" type="float" visibility="private"/>
         <Field name="id_alumno" type="int" visibility="private"/>
-        <Field name="fecha" type="LocalDateTime" visibility="private"/>
+        <Field name="fecha" type="LocalDate" visibility="private"/>
         <Field name="estado" type="boolean" visibility="private"/>
       </Fields>
       <Constructors>
@@ -18,14 +18,14 @@
           <Argument type="String" name="apellido"/>
           <Argument type="float" name="dni"/>
           <Argument type="int" name="id_alumno"/>
-          <Argument type="LocalDateTime" name="fecha"/>
+          <Argument type="LocalDate" name="fecha"/>
           <Argument type="boolean" name="estado"/>
         </Constructor>
         <Constructor visibility="public">
           <Argument type="String" name="nombre"/>
           <Argument type="String" name="apellido"/>
           <Argument type="float" name="dni"/>
-          <Argument type="LocalDateTime" name="fecha"/>
+          <Argument type="LocalDate" name="fecha"/>
           <Argument type="boolean" name="estado"/>
         </Constructor>
       </Constructors>
@@ -43,7 +43,7 @@
           <Argument type="float" name="dni"/>
         </Method>
         <Method name="getId_alumno" returnType="int" visibility="public"/>
-        <Method name="getFecha" returnType="LocalDateTime" visibility="public"/>
+        <Method name="getFecha" returnType="LocalDate" visibility="public"/>
         <Method name="setFecha" returnType="void" visibility="public">
           <Argument type="LocalDateTime" name="fecha"/>
         </Method>
@@ -78,7 +78,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Matreria" package="Entidades" visibility="public" xPosition="1412.0" yPosition="349.0">
+    <Class name="Matreria" package="Entidades" visibility="public" xPosition="1075.0" yPosition="493.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="anio" type="int" visibility="private"/>
@@ -118,7 +118,7 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="id_alumno" source="Entidades.Inscripcion" target="Entidades.Alumno" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <HasRelation name="id_materia" source="Entidades.Inscripcion" target="Entidades.Matreria" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="id_alumno" source="Entidades.Inscripcion" target="Entidades.Alumno" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
   </ClassDiagramRelations>
 </ClassDiagram>

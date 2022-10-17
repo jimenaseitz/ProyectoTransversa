@@ -1,9 +1,10 @@
-package Entidades;
+package persistencia;
 
+import Entidades.*;
 import java.time.LocalDate;
 
 
-public class Alumno {
+public class AlumnoData {
 
     private String nombre;
 
@@ -17,10 +18,10 @@ public class Alumno {
 
     private boolean estado;
 
-    public Alumno() {
+    public AlumnoData() {
     }
 
-    public Alumno(String nombre, String apellido, float dni, int id_alumno, LocalDate fecha, boolean estado) {
+    public AlumnoData(String nombre, String apellido, float dni, int id_alumno, LocalDate fecha, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -29,7 +30,7 @@ public class Alumno {
         this.estado = estado;
     }
 
-    public Alumno(String nombre, String apellido, float dni, LocalDate fecha, boolean estado) {
+    public AlumnoData(String nombre, String apellido, float dni, LocalDate fecha, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
