@@ -20,6 +20,13 @@ public class Alumno {
     public Alumno() {
     }
 
+    public Alumno(String nombre, LocalDate fecha, boolean estado) {
+        this.nombre = nombre;
+        this.fecha = fecha;
+        this.estado = estado;
+    }
+
+   
     public Alumno(String nombre, String apellido, float dni, int id_alumno, LocalDate fecha, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
