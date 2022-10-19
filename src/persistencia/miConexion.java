@@ -19,24 +19,25 @@ public class miConexion {
     private String url;
     private String usuario;
     private String password;
+    
     private Connection conexion;
-    public miConexion() {
-    }
+   
     public miConexion(String url, String usr, String pass) {
         this.url = url;
         this.usuario = usr;
         this.password = pass;
     }
     public Connection buscarConexion() {
-        if (conexion == null) {
+        if (conexion == null) {//si se conecta por primera vez
             try {
-                //establecemos por primera vez
+                //se cargan las clases de mariadb que se implementan
                 Class.forName("org.mariadb.jdbc.Driver");
-                conexion = DriverManager.getConnection(url, usuario, password);
+                conexion = DriverManager.getConnection("jdbc://mariadb://localhost/proyecto", usuario, password);
+                //conexion = DriverManager.getConnection(url, usuario, password);
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(miConexion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-            return conexion;//devyuelve conexion establecida
+            return conexion;//devuelve conexion establecida
     }
 }
