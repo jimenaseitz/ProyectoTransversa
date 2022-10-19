@@ -41,11 +41,36 @@ public class AlumnoData {
         }
     }
 
-    public Alumno void buscarAlumno(int id) {
+    public Alumno buscarAlumno(int id) {
+        Alumno a = null;
+        String sql = "SELECT * FROM alumno WHERE id_alumno=?"; //1
 
-    }//busco un alummno
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql); //2
+            ps.setInt(1, id);
+            ResultSet rs= ps.executeQuery();//paso 3
+            while (rs.next()) {
+                a= new Alumno();// paso 4 armamos el objeto
+                a.setId_alumno(rs.getInt("id_alumno"));
+                a.setDni(rs.getFloat("dni"));
+                a.setApellido(rs.getString("apellido"));
+                a.setNombre(rs.getString("nombre"));
+                a.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+                a.setEstado(rs.getBoolean("estado"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //busco un alummno
+        return null;
+     
+    }
 
-    public void actualizarAlumno(Alumno a) {
+
+
+public void actualizarAlumno(Alumno a) {
 
         String query = "UPDATE alumno set nombre=?, fecha_nacimiento=?, estado=? where id_alumno=?"; //1
         try {
@@ -59,8 +84,14 @@ public class AlumnoData {
 
             ps.close();
 
-        } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        
+
+
+
+} catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class
+
+.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//Actualizar un alumno
