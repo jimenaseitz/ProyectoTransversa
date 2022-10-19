@@ -21,6 +21,11 @@ public class Conexion {
     private String usuario;
     private String password;
     private Connection conexion;
+
+    public Conexion() {
+    }
+ 
+    
     
     public Conexion(String url, String usuario, String password)throws ClassNotFoundException {
         this.url = url;

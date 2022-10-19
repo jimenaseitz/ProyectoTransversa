@@ -64,7 +64,7 @@ public class AlumnoData {
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
         //busco un alummno
-        return null;
+        return a;
      
     }
 
