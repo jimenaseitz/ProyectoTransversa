@@ -13,37 +13,46 @@ public class Alumno {
 
     private int id_alumno;
 
-    private LocalDate fecha;
+    private LocalDate fecha_nacimiento;
 
     private boolean estado;
 
     public Alumno() {
     }
 
-    public Alumno(String nombre, LocalDate fecha, boolean estado) {
+    public Alumno(String nombre, LocalDate fecha_nacimiento, boolean estado) {
         this.nombre = nombre;
-        this.fecha = fecha;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.estado = estado;
     }
 
    
-    public Alumno(String nombre, String apellido, float dni, int id_alumno, LocalDate fecha, boolean estado) {
+    public Alumno(String nombre, String apellido, float dni, int id_alumno, LocalDate fecha_nacimiento, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.id_alumno = id_alumno;
-        this.fecha = fecha;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.estado = estado;
     }
 
-    public Alumno(String nombre, String apellido, float dni, LocalDate fecha, boolean estado) {
+    public Alumno(String nombre, String apellido, float dni, LocalDate fecha_nacimiento, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.fecha = fecha;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.estado = estado;
     }
 
+    public void setId_alumno(int id_alumno) {
+        this.id_alumno = id_alumno;
+    }
+
+     public int getId_alumno() {
+        return id_alumno;
+    }
+
+    
     public String getNombre() {
         return nombre;
     }
@@ -68,19 +77,16 @@ public class Alumno {
         this.dni = dni;
     }
 
-    public int getId_alumno() {
-        return id_alumno;
+   
+    public LocalDate getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
-
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
@@ -88,8 +94,13 @@ public class Alumno {
         this.estado = estado;
     }
 
+ 
+
+    
+    
+    
     @Override
     public String toString() {
-        return "Alumno{" + "nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", id_alumno=" + id_alumno + ", fecha=" + fecha + ", estado=" + estado + '}';
+        return "Alumno{" + "nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", id_alumno=" + id_alumno + ", fecha_nacimiento=" + fecha_nacimiento + ", estado=" + estado + '}';
     }
 }
