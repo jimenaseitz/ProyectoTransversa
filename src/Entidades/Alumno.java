@@ -27,7 +27,7 @@ public class Alumno {
     }
 
    
-    public Alumno(String nombre, String apellido, float dni, int id_alumno, LocalDate fecha_nacimiento, boolean estado) {
+    public Alumno( int id_alumno, String nombre, String apellido, float dni, LocalDate fecha_nacimiento, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;

@@ -6,7 +6,7 @@
 package Vistas;
 
 import Entidades.Alumno;
-import Entidades.Conexion;
+import persistencia.Conexion;
 import com.sun.istack.internal.logging.Logger;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,8 +14,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import persistencia.AlumnoData;
-import persistencia.miConexion;
-import test.Conecta;
+
 
 /**
  *
@@ -25,38 +24,23 @@ public class Prueba {
 
     private AlumnoData alumnoData;
     private Conexion conexion;
-    
-    public static void main(String[] args) {
-
-        LocalDate fecha = LocalDate.now();
-        Alumno ala,estudioso = new Alumno("prueba",fecha,true);//0
-       AlumnoData buscar=null;
-    
-        Conecta c  = new Conecta();
-        Conexion al = new Conexion();
-        //c.conectar();
-        System.out.println(al.getConexion());
-        buscar.actualizarAlumno(estudioso);
-  
-    }
-}
-
-    
-   /* void conectar(){
-    
-        try {
-           Class.forName("com.mysql.jdbc.Driver");
-            Conexion con= new Conexion("jbdc:mysql://localhost/proyecto","root","");
-           //Statement stmt=con.createStatement();  
-           // ResultSet rs=stmt.executeQuery("show databases;");
-            System.out.println("Connected");  
-            
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-      
+    AlumnoData dat=new AlumnoData();
 
    
-}//final
-*/
+    public static void main(String[] args) {
+
+        Conexion con = new Conexion();
+
+        System.out.println(con.getConexion());
+/*        Alumno nuevo= new Alumno();
+        nuevo.setApellido("PRUEBA1");
+        nuevo.setNombre("NOMBRE");
+        nuevo.setDni(12345);
+        nuevo.setFecha_nacimiento(LocalDate.now());
+        nuevo.setEstado(true);
+        con.getConexion();
+        dat.guardarAlumno(nuevo);
+  */    
+
+    }
+}
