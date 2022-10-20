@@ -1,6 +1,6 @@
 package Entidades;
 
-public class Matreria {
+public class Materia {
 
     private String nombre;
 
@@ -10,17 +10,17 @@ public class Matreria {
 
     private boolean estado;
 
-    public Matreria() {
+    public Materia() {
     }
 
-    public Matreria(String nombre, int anio, int id_materia, boolean estado) {
+    public Materia(String nombre, int anio, int id_materia, boolean estado) {
         this.nombre = nombre;
         this.anio = anio;
         this.id_materia = id_materia;
         this.estado = estado;
     }
 
-    public Matreria(String nombre, int anio, boolean estado) {
+    public Materia(String nombre, int anio, boolean estado) {
         this.nombre = nombre;
         this.anio = anio;
         this.estado = estado;

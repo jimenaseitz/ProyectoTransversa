@@ -9,7 +9,7 @@ public class Alumno {
 
     private String apellido;
 
-    private float dni;
+    private long dni;
 
     private int id_alumno;
 
@@ -27,7 +27,7 @@ public class Alumno {
     }
 
    
-    public Alumno( int id_alumno, String nombre, String apellido, float dni, LocalDate fecha_nacimiento, boolean estado) {
+    public Alumno( int id_alumno, String nombre, String apellido, long dni, LocalDate fecha_nacimiento, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -36,7 +36,7 @@ public class Alumno {
         this.estado = estado;
     }
 
-    public Alumno(String nombre, String apellido, float dni, LocalDate fecha_nacimiento, boolean estado) {
+    public Alumno(String nombre, String apellido, long dni, LocalDate fecha_nacimiento, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -44,15 +44,6 @@ public class Alumno {
         this.estado = estado;
     }
 
-    public void setId_alumno(int id_alumno) {
-        this.id_alumno = id_alumno;
-    }
-
-     public int getId_alumno() {
-        return id_alumno;
-    }
-
-    
     public String getNombre() {
         return nombre;
     }
@@ -69,15 +60,22 @@ public class Alumno {
         this.apellido = apellido;
     }
 
-    public float getDni() {
+    public long getDni() {
         return dni;
     }
 
-    public void setDni(float dni) {
+    public void setDni(long dni) {
         this.dni = dni;
     }
 
-   
+    public int getId_alumno() {
+        return id_alumno;
+    }
+
+    public void setId_alumno(int id_alumno) {
+        this.id_alumno = id_alumno;
+    }
+
     public LocalDate getFecha_nacimiento() {
         return fecha_nacimiento;
     }
@@ -94,7 +92,8 @@ public class Alumno {
         this.estado = estado;
     }
 
- 
+    
+    
 
     
     

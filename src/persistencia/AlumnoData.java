@@ -66,7 +66,7 @@ public class AlumnoData {
             //while (rs.next()) {
             a = new Alumno();// paso 4 armamos el objeto
             a.setId_alumno(rs.getInt("id_alumno"));
-            a.setDni(rs.getFloat("dni"));
+            a.setDni(rs.getLong("dni"));
             a.setApellido(rs.getString("apellido"));
             a.setNombre(rs.getString("nombre"));
             a.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());

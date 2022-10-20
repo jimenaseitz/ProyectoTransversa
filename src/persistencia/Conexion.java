@@ -22,8 +22,9 @@ public class Conexion {
     //String url="jdbc:mysql://localhost/proyecto/";
     String usr = "root";
     String pass = "";
+  // String timeZone="?useLegacyDatetimeCode=false&serverTimezone=UTC\";
     String driver = "org.mariadb.jdbc.Driver";
-    Connection cx;
+    Connection cx=null;
 
      public Conexion() {
     }
@@ -32,6 +33,8 @@ public class Conexion {
         if (cx == null) {
             try {
                 Class.forName(driver);
+                //url + "?useLegacyDatetimeCode=false&serverTimezone=UTC" + "&user=" + usuario + "&password=" + password
+
                 cx = DriverManager.getConnection(url + db, usr, pass);
                 System.out.println("Se conectó a bd" + db);
             } catch (ClassNotFoundException | SQLException ex) {
