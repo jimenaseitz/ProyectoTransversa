@@ -16,8 +16,9 @@ import java.util.logging.Logger;
  * @author sistema
  */
 public class Conecta {
-      String db="alumno";
-    String url="jdbc:mysql://localhost/proyecto/";
+      String db="";
+   String url="jdbc:mysql://localhost:3306/proyecto";
+      //String url="jdbc:mysql://localhost/proyecto/";
         String usr="root";
         String pass="";
         String driver="org.mariadb.jdbc.Driver";

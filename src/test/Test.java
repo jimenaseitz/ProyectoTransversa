@@ -8,6 +8,7 @@ package test;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,7 +24,12 @@ public class Test {
     String url="jdbc:mysql://localhost:3306/proyecto";
     String user="root";
     String pass="";
-        
+        System.out.println("hola");     
+        JOptionPane.showMessageDialog(null,"Hello");
+ 
+        Conecta c = new Conecta();
+        c.conectar();
+    /*
     Connection conexion;
         try {
             conexion = DriverManager.getConnection(url, user, pass);
@@ -31,7 +37,8 @@ public class Test {
             System.out.println(conexion.getMetaData());
         } catch (SQLException ex) {
             System.out.println("no ingrese");
-            
+      */
+    
         }
     
    

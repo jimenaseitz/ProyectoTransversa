@@ -39,8 +39,10 @@ public class Conexion {
             try {
                 //establecemos por primera vez
                 Class.forName("org.mariadb.jdbc.Driver");
-                conexion = DriverManager.getConnection("jdbc://localhost/proyecto", "root", "");
+                conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto", "root", "");
+                System.out.println("Se conecto");
             } catch (SQLException | ClassNotFoundException ex) {
+                System.out.println("No hay Conexion");
                 Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

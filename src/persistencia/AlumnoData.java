@@ -41,7 +41,7 @@ public class AlumnoData {
         }
     }
 
-    public Alumno buscarAlumno(int id) {
+    public Alumno  buscarAlumno(int id) {
         Alumno a = null;
         String sql = "SELECT * FROM alumno WHERE id_alumno=?"; //1
 
@@ -49,8 +49,10 @@ public class AlumnoData {
         try {
             ps = con.prepareStatement(sql); //2
             ps.setInt(1, id);
+            
             ResultSet rs= ps.executeQuery();//paso 3
-            while (rs.next()) {
+            
+            //while (rs.next()) {
                 a= new Alumno();// paso 4 armamos el objeto
                 a.setId_alumno(rs.getInt("id_alumno"));
                 a.setDni(rs.getFloat("dni"));
@@ -58,13 +60,14 @@ public class AlumnoData {
                 a.setNombre(rs.getString("nombre"));
                 a.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 a.setEstado(rs.getBoolean("estado"));
-            }
+            //}
             ps.close();
-        } catch (SQLException ex) {
+        } catch ( SQLException | ex) {
+             
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
         //busco un alummno
-        return a;
+     return a;
      
     }
 
