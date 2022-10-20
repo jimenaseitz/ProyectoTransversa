@@ -32,7 +32,7 @@ public class Prueba {
         Conexion con = new Conexion();
 
         System.out.println(con.getConexion());
-/*        Alumno nuevo= new Alumno();
+       Alumno nuevo= new Alumno();
         nuevo.setApellido("PRUEBA1");
         nuevo.setNombre("NOMBRE");
         nuevo.setDni(12345);
@@ -40,7 +40,7 @@ public class Prueba {
         nuevo.setEstado(true);
         con.getConexion();
         dat.guardarAlumno(nuevo);
-  */    
+     
 
     }
 }
