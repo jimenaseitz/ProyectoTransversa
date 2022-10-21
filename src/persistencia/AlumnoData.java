@@ -1,6 +1,7 @@
 package persistencia;
 
 import Entidades.*;
+import Vistas.UniversidadG7;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -10,19 +11,53 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import sun.util.logging.PlatformLogger;
 
 public class AlumnoData {
-    private Connection con = null;
-    Conexion conexion= new Conexion();
+    private Connection cx;
 
     public AlumnoData() {
-        this.con = conexion.getConexion();
-
+        this.cx = Conexion.getConexion();
     }
 
     public void guardarAlumno(Alumno a) {
 
+        try {
+            String sql = "INSERT INTO `alumno`( `DNI`, `Apellido`, `Nombre`, `Fecha_nacimiento`, `Estado`) VALUES (?,?,?,?,?)";
+            //          Connection cx = con.getConexion();
+            PreparedStatement ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setLong(1, a.getDni());
+            ps.setString(2, a.getApellido());
+            ps.setString(3, a.getNombre());
+            ps.setDate(4, java.sql.Date.valueOf(a.getFecha_nacimiento()));
+            ps.setBoolean(5, true);
+
+            int agregoregistro = ps.executeUpdate();
+            String cartel;
+            if (agregoregistro > 0) {
+                cartel = "El Registro fue agregado";
+            } else {
+                cartel = "No fue posible agregar el registro";
+            }
+            JOptionPane.showMessageDialog(null, cartel);
+            ResultSet rs = ps.getGeneratedKeys();
+
+            if (rs.next()) {
+                int clave = rs.getInt(1);
+                a.setId_alumno(clave);
+            }
+            System.out.println(a);
+            cx.close();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+    }
+    /*
+    public void viejoguardarAlumno(Alumno a) {
+    /*
         a.setApellido("PRUEBA1");
         a.setNombre("NOMBRE");
         a.setDni(12345);
@@ -50,6 +85,7 @@ public class AlumnoData {
         } catch (SQLException ex) {
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
+         
     }
 
     public Alumno buscarAlumno(int id) {
@@ -102,5 +138,5 @@ public class AlumnoData {
         }
 
     }//Actualizar un alumno
-
+     */
 }

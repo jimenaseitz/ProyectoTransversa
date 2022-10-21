@@ -17,19 +17,17 @@ import java.util.logging.Logger;
  * @author sistema
  */
 public class Conexion {
-    String db = "";
-    String url = "jdbc:mysql://localhost:3306/proyecto";
+    private static String db = "";
+    private static String url = "jdbc:mysql://localhost:3306/proyecto";
     //String url="jdbc:mysql://localhost/proyecto/";
-    String usr = "root";
-    String pass = "";
+    private static String usr = "root";
+    private static String pass = "";
   // String timeZone="?useLegacyDatetimeCode=false&serverTimezone=UTC\";
-    String driver = "org.mariadb.jdbc.Driver";
-    Connection cx=null;
+    private static String driver = "org.mariadb.jdbc.Driver";
+    private static Connection cx=null;
 
-     public Conexion() {
-    }
-
-    public  Connection getConexion() {
+  
+    public static Connection getConexion() {
         if (cx == null) {
             try {
                 Class.forName(driver);
