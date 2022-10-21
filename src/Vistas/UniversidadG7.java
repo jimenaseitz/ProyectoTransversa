@@ -25,7 +25,8 @@ public class UniversidadG7 {
 
         //Conexion con = new Conexion();
         Alumno nuevo = new Alumno();
-        nuevo.setApellido("sANCHEZ");
+        
+        nuevo.setApellido("SANCHEZ");
         nuevo.setNombre("TOMAS JOAQUIN");
         nuevo.setDni(44444444);
         nuevo.setFecha_nacimiento(LocalDate.now());
@@ -38,7 +39,8 @@ System.out.println(dat.buscarAlumno(3));
          
         
         ///ACTUALIZANDO ALUMNO POR DNI
-        
+        nuevo.setId_alumno(6);
+        nuevo.setApellido("PP");
         
         dat.actualizarAlumno(nuevo);
         

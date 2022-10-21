@@ -83,19 +83,23 @@ public class AlumnoData {
     }
 
     public void actualizarAlumno(Alumno a) {
-        String query = "UPDATE alumno set nombre=?, fecha_nacimiento=?, estado=? where id_alumno=?"; //1
+        String query = "UPDATE alumno set nombre=?, fecha_nacimiento=?, estado=?, dni=? where id_alumno=?"; //1
         try {
             PreparedStatement ps = cx.prepareStatement(query);//2
             ps.setString(1, a.getNombre());
             ps.setDate(2, Date.valueOf(a.getFecha_nacimiento()));
             ps.setBoolean(3, a.getEstado());
-            ps.execute();//3
-            ps.setInt(4, a.getId_alumno());
-            ResultSet rs = ps.getGeneratedKeys(); //recupera y asigna
-            ps.executeUpdate();
+            ps.setInt(4,Math.toIntExact(a.getDni()));
+            ps.setInt(5, a.getId_alumno());
+  //          ResultSet rs = ps.getGeneratedKeys(); //recupera y asigna
+            if (ps.executeUpdate()>0) {
+                JOptionPane.showMessageDialog(null,"DATOS ACTUALIZADOS");
+            }
+
             ps.close();
 
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"NO SE HA PODIDO ACTUALIZAR EL ALUMNO - VERIFIQUE");
             Logger.getLogger(AlumnoData.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
