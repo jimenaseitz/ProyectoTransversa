@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import sun.util.logging.PlatformLogger;
 
 public class AlumnoData {
+
     private Connection cx;
 
     public AlumnoData() {
@@ -25,7 +26,6 @@ public class AlumnoData {
 
         try {
             String sql = "INSERT INTO `alumno`( `DNI`, `Apellido`, `Nombre`, `Fecha_nacimiento`, `Estado`) VALUES (?,?,?,?,?)";
-            //          Connection cx = con.getConexion();
             PreparedStatement ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setLong(1, a.getDni());
             ps.setString(2, a.getApellido());
@@ -55,81 +55,44 @@ public class AlumnoData {
         }
 
     }
-    /*
-    public void viejoguardarAlumno(Alumno a) {
-    /*
-        a.setApellido("PRUEBA1");
-        a.setNombre("NOMBRE");
-        a.setDni(12345);
-        a.setFecha_nacimiento(LocalDate.now());
-        a.setEstado(true);
-
-        String query = "INSERT INTO alumno (id_alumno, apellido, nombre, dni, fecha_nacimiento, estado) Values (?,?,?,?,?,?)"; //1
-        try {
-            PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);//2
-            ps.setString(2, a.getApellido());
-            ps.setString(3, a.getNombre());
-            ps.setInt(4, 111);
-            //ps.setInt(4, a.getDni());
-            ps.setDate(5, Date.valueOf(a.getFecha_nacimiento()));
-            ps.setBoolean(6, a.getEstado());
-            ps.execute();//3
-            ResultSet rs = ps.getGeneratedKeys(); //recupera y asigna
-            if (rs.next()) {
-                a.setId_alumno(rs.getInt(1));
-            } else {
-                System.out.println("no se pudo obtener el Id del Alumno");
-            }
-            ps.close();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         
-    }
 
     public Alumno buscarAlumno(int id) {
-        Alumno a = null;
+        Alumno al = new Alumno();
         String sql = "SELECT * FROM alumno WHERE id_alumno=?"; //1
-
         PreparedStatement ps;
         try {
-            ps = con.prepareStatement(sql); //2
+            ps = cx.prepareStatement(sql); //2
             ps.setInt(1, id);
-
             ResultSet rs = ps.executeQuery();//paso 3
-
-            //while (rs.next()) {
-            a = new Alumno();// paso 4 armamos el objeto
-            a.setId_alumno(rs.getInt("id_alumno"));
-            a.setDni(rs.getLong("dni"));
-            a.setApellido(rs.getString("apellido"));
-            a.setNombre(rs.getString("nombre"));
-            a.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
-            a.setEstado(rs.getBoolean("estado"));
-            //}
+            if (rs.next()) {
+                al.setId_alumno(id);
+                al.setDni(rs.getInt("dni"));
+                al.setApellido(rs.getString("apellido"));
+                al.setNombre(rs.getString("nombre"));
+                al.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+                al.setEstado(rs.getBoolean("estado"));
+            }
+            else {
+            JOptionPane.showMessageDialog(null,"NO SE ENCONTRARON REGISTRO CON EL ID INDICADO");
+            }
             ps.close();
         } catch (SQLException ex) {
-
             Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //busco un alummno
-        return a;
-
+        return al;
     }
-
     public void actualizarAlumno(Alumno a) {
-
         String query = "UPDATE alumno set nombre=?, fecha_nacimiento=?, estado=? where id_alumno=?"; //1
         try {
-            PreparedStatement ps = con.prepareStatement(query);//2
+            
+            PreparedStatement ps = cx.prepareStatement(query);//2
             ps.setString(1, a.getNombre());
             ps.setDate(2, Date.valueOf(a.getFecha_nacimiento()));
             ps.setBoolean(3, a.getEstado());
             ps.execute();//3
             ps.setInt(4, a.getId_alumno());
             ResultSet rs = ps.getGeneratedKeys(); //recupera y asigna
-
+            ps.executeUpdate();
             ps.close();
 
         } catch (SQLException ex) {
@@ -138,5 +101,5 @@ public class AlumnoData {
         }
 
     }//Actualizar un alumno
-     */
+
 }
