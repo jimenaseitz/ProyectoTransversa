@@ -6,17 +6,7 @@ package Vistas;
  * and open the template in the editor.
  */
 import Entidades.Alumno;
-import persistencia.Conexion;
-import com.sun.istack.internal.logging.Logger;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.logging.Level;
-import javax.swing.JOptionPane;
 import persistencia.AlumnoData;
 
 /**
