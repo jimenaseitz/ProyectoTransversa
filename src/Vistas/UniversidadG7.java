@@ -31,9 +31,16 @@ public class UniversidadG7 {
         nuevo.setFecha_nacimiento(LocalDate.now());
         nuevo.setEstado(true);
 //        dat.guardarAlumno(nuevo);
-        System.out.println(dat.buscarAlumno(3));
+ 
+//BUSCANDO ALUMNO POR ID///
+System.out.println(dat.buscarAlumno(3));
         System.out.println(dat.buscarAlumno(1));
-         dat.actualizarAlumno(nuevo);
+         
+        
+        ///ACTUALIZANDO ALUMNO POR DNI
+        
+        
+        dat.actualizarAlumno(nuevo);
         
         
     }

@@ -32,7 +32,6 @@ public class Conexion {
             try {
                 Class.forName(driver);
                 //url + "?useLegacyDatetimeCode=false&serverTimezone=UTC" + "&user=" + usuario + "&password=" + password
-
                 cx = DriverManager.getConnection(url + db, usr, pass);
                 System.out.println("Se conectó a bd" + db);
             } catch (ClassNotFoundException | SQLException ex) {

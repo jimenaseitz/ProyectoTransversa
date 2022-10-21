@@ -81,10 +81,10 @@ public class AlumnoData {
         }
         return al;
     }
+
     public void actualizarAlumno(Alumno a) {
         String query = "UPDATE alumno set nombre=?, fecha_nacimiento=?, estado=? where id_alumno=?"; //1
         try {
-            
             PreparedStatement ps = cx.prepareStatement(query);//2
             ps.setString(1, a.getNombre());
             ps.setDate(2, Date.valueOf(a.getFecha_nacimiento()));
