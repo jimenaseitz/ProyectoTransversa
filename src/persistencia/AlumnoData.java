@@ -32,7 +32,6 @@ public class AlumnoData {
             ps.setString(3, a.getNombre());
             ps.setDate(4, java.sql.Date.valueOf(a.getFecha_nacimiento()));
             ps.setBoolean(5, true);
-
             int agregoregistro = ps.executeUpdate();
             String cartel;
             if (agregoregistro > 0) {
@@ -42,15 +41,15 @@ public class AlumnoData {
             }
             JOptionPane.showMessageDialog(null, cartel);
             ResultSet rs = ps.getGeneratedKeys();
-
             if (rs.next()) {
                 int clave = rs.getInt(1);
                 a.setId_alumno(clave);
             }
             System.out.println(a);
-            cx.close();
+            ps.close();
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "VERIFIQUE DATOS -posible alumno existente ");
+            //(java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -71,37 +70,41 @@ public class AlumnoData {
                 al.setNombre(rs.getString("nombre"));
                 al.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 al.setEstado(rs.getBoolean("estado"));
-            }
-            else {
-            JOptionPane.showMessageDialog(null,"NO SE ENCONTRARON REGISTRO CON EL ID INDICADO");
+            } else {
+                JOptionPane.showMessageDialog(null, "NO SE ENCONTRARON REGISTRO CON EL ID INDICADO");
             }
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Verifique Sentencia -AlumnoData-buscarAlumno");
+//Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return al;
     }
 
     public void actualizarAlumno(Alumno a) {
-        String query = "UPDATE alumno set nombre=?, fecha_nacimiento=?, estado=?, dni=? where id_alumno=?"; //1
+
+        //   public Alumno( int id_alumno, String nombre, String apellido, long dni, LocalDate fecha_nacimiento, boolean estado) {
+        String query = "UPDATE alumno set nombre=?, apellido=?,  dni=?, fecha_nacimiento=?, estado=? where id_alumno=?"; //1
+        PreparedStatement ps;
         try {
-            PreparedStatement ps = cx.prepareStatement(query);//2
+            ps = cx.prepareStatement(query);//2
             ps.setString(1, a.getNombre());
-            ps.setDate(2, Date.valueOf(a.getFecha_nacimiento()));
-            ps.setBoolean(3, a.getEstado());
-            ps.setInt(4,Math.toIntExact(a.getDni()));
-            ps.setInt(5, a.getId_alumno());
-  //          ResultSet rs = ps.getGeneratedKeys(); //recupera y asigna
-            if (ps.executeUpdate()>0) {
-                JOptionPane.showMessageDialog(null,"DATOS ACTUALIZADOS");
+            ps.setString(2, a.getApellido());
+            ps.setInt(3, Math.toIntExact(a.getDni()));
+            ps.setDate(4, Date.valueOf(a.getFecha_nacimiento()));
+            ps.setBoolean(5, a.getEstado());
+            ps.setInt(6, a.getId_alumno());
+            int bandera=ps.executeUpdate();
+            if (bandera > 0) {
+                JOptionPane.showMessageDialog(null, "DATOS ACTUALIZADOS");
             }
-
+            else {
+                JOptionPane.showMessageDialog(null,"NO SE HA PODIDO ACTUALIZAR LOS DATOS");
+            }
             ps.close();
-
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"NO SE HA PODIDO ACTUALIZAR EL ALUMNO - VERIFIQUE");
-            Logger.getLogger(AlumnoData.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ACTUALIZAR EL ALUMNO - VERIFIQUE");
+
         }
 
     }//Actualizar un alumno
