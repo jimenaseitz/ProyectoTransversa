@@ -2,6 +2,7 @@ package persistencia;
 
 import Entidades.*;
 import Vistas.UniversidadG7;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -109,4 +110,23 @@ public class AlumnoData {
 
     }//Actualizar un alumno
 
+    public void borrarAlumno(int id, boolean condicion){//borrado logico
+        String sql ="UPDATE alumno SET estado=? where id_alumno=?";
+        PreparedStatement ps;
+        try {
+            ps= cx.prepareStatement(sql);
+            ps.setBoolean(1, condicion);
+            ps.setInt(2, id);
+            if (ps.executeUpdate()>0){
+            JOptionPane.showMessageDialog(null, "SE REALIZÓ BORRADO LOGICO");
+           
+        }else  {
+                JOptionPane.showMessageDialog(null,"el id ingresado no se encuentra - verifique");
+                }
+            
+        } catch (SQLException ex) {
+            System.out.println("Error en sentencia verifique sql");
+        }
+                
+    }
 }
