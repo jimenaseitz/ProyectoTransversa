@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -130,18 +129,32 @@ public class AlumnoData {
 
     }
 
-    public ArrayList buscaAlumnosxApe(String Nombre) {
-        ArrayList<Alumno> lista=null;
+    public ArrayList buscaAlumnos() {
+        ArrayList<Alumno> listatmp = new ArrayList();
         Alumno al;
-        String sql = "Select * from alumno apellido=?";
-        PreparedStatement ps;
+        String sql = "Select * from alumno estado=1";
+
         try {
-
-        } catch (Exception e) {
-
+            PreparedStatement ps = cx.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                al = new Alumno();
+                al.setId_alumno(rs.getInt("id_alumno"));
+                al.setApellido(rs.getString("apellido"));
+                al.setNombre(rs.getString("nombre"));
+                al.setDni(rs.getInt("dni"));
+                al.setEstado(rs.getBoolean("estado"));
+                al.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+                listatmp.add(al);
+            
+            }
+            ps.close();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Lista O consulta incorrecta, verifique");
         }
 
-        return lista;
+        return listatmp;
 
     }
 
