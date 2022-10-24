@@ -132,12 +132,11 @@ public class AlumnoData {
     public ArrayList buscaAlumnos() {
         ArrayList<Alumno> listatmp = new ArrayList();
         Alumno al;
-        String sql = "Select * from alumno estado=1";
-
+        String sql = "Select * from alumno where estado=1";
         try {
             PreparedStatement ps = cx.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 al = new Alumno();
                 al.setId_alumno(rs.getInt("id_alumno"));
@@ -147,7 +146,7 @@ public class AlumnoData {
                 al.setEstado(rs.getBoolean("estado"));
                 al.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 listatmp.add(al);
-            
+                
             }
             ps.close();
         } catch (Exception ex) {

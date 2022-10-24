@@ -65,5 +65,7 @@ public class UniversidadG7 {
         dat.borrarAlumno(1, false);
         System.out.println("se trata de haccer borrado logio con id inexistente");
         dat.borrarAlumno(-1, false);
+        System.out.println("consultando todos los alumnos activos ");
+        System.out.println(dat.buscaAlumnos());
     }
 }
