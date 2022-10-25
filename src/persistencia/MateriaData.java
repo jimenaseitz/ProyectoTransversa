@@ -50,13 +50,11 @@ public class MateriaData {
             
             System.out.println(m);
             cx.close();
-                //que
-
-            }
+                       }
             System.out.println(m);
             cx.close();
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
+            //java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null,"NO SE HA PODIDO GUARDAR LA MATERIA - VERIFIQUE");
         }
 
