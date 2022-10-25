@@ -6,8 +6,10 @@ package Vistas;
  * and open the template in the editor.
  */
 import Entidades.Alumno;
+import Entidades.Materia;
 import java.time.LocalDate;
 import persistencia.AlumnoData;
+import persistencia.MateriaData;
 
 /**
  *
@@ -43,7 +45,14 @@ System.out.println(dat.buscarAlumno(3));
         nuevo.setApellido("PP");
         
        // dat.actualizarAlumno(nuevo);
+        // AGREGAR MATERIA
+        Materia ma = new Materia();
+        ma.setNombre("MAtematica 1");
+        ma.setAnio(1);
+        ma.setEstado(true);
         
+        MateriaData m = new MateriaData();
+        m.guardarMateria(ma);
         
     }
 }

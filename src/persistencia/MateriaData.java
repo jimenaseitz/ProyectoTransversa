@@ -8,11 +8,13 @@ package persistencia;
 import Entidades.Materia;
 import Vistas.UniversidadG7;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -56,9 +58,33 @@ public class MateriaData {
             System.out.println(m);
             cx.close();
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
+           // java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null,"NO SE HA PODIDO GUARDAR LA MATERIA - VERIFIQUE");
         }
 
+        
     }
+     
+     public void actualizarMateria (Materia m){
+        String query = "UPDATE materia set nombre=?, anio=?, estado=? where id_materia=?"; //1
+        try {
+            PreparedStatement ps = cx.prepareStatement(query);//2
+            ps.setString(1, m.getNombre());
+            ps.setInt(2, m.getAnio());
+            ps.setBoolean(3, m.getEstado());
+            ps.setInt(4, m.getId_materia());
+            if (ps.executeUpdate()>0) {
+                JOptionPane.showMessageDialog(null,"DATOS ACTUALIZADOS");
+            }else{
+                JOptionPane.showMessageDialog(null, "NO EXISTE LA MATERIA - VERIFIQUE");
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"NO SE HA PODIDO ACTUALIZAR LA MATERIA - VERIFIQUE");
+           /* Logger.getLogger(MateriaData.class
+                    .getName()).log(Level.SEVERE, null, ex);*/
+        }
+        }
 }
