@@ -32,7 +32,7 @@ public class MateriaData {
             PreparedStatement ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, m.getNombre());
             ps.setInt(2, m.getAnio());
-            ps.setBoolean(3, m.isEstado());
+            ps.setBoolean(3, m.getEstado());
             
             int agregoregistro = ps.executeUpdate();
             String cartel;
@@ -46,7 +46,10 @@ public class MateriaData {
 
             if (rs.next()) {
                 int clave = rs.getInt(1);
-                
+                m.setId_materia(clave);
+            
+            System.out.println(m);
+            cx.close();
                 //que
 
             }
@@ -54,7 +57,7 @@ public class MateriaData {
             cx.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
-
+            JOptionPane.showMessageDialog(null,"NO SE HA PODIDO GUARDAR LA MATERIA - VERIFIQUE");
         }
 
     }

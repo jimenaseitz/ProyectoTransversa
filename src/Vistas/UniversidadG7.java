@@ -28,10 +28,10 @@ public class UniversidadG7 {
         
         nuevo.setApellido("SANCHEZ");
         nuevo.setNombre("TOMAS JOAQUIN");
-        nuevo.setDni(44444444);
+        nuevo.setDni(4444);
         nuevo.setFecha_nacimiento(LocalDate.now());
         nuevo.setEstado(true);
-//        dat.guardarAlumno(nuevo);
+      dat.guardarAlumno(nuevo);
  
 //BUSCANDO ALUMNO POR ID///
 System.out.println(dat.buscarAlumno(3));
@@ -42,7 +42,7 @@ System.out.println(dat.buscarAlumno(3));
         nuevo.setId_alumno(6);
         nuevo.setApellido("PP");
         
-        dat.actualizarAlumno(nuevo);
+       // dat.actualizarAlumno(nuevo);
         
         
     }

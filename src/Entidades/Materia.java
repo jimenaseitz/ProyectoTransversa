@@ -46,7 +46,12 @@ public class Materia {
         return id_materia;
     }
 
-    public boolean isEstado() {
+    public void setId_materia(int id_materia) {
+        this.id_materia = id_materia;
+    }
+
+   
+    public boolean getEstado() {
         return estado;
     }
 
