@@ -58,7 +58,7 @@ public class AlumnoData {
 
     public Alumno buscarAlumno(int id) {
         Alumno al = new Alumno();
-        String sql = "SELECT * FROM alumno WHERE id_alumno=?"; //1
+        String sql = "SELECT * FROM WHERE id_alumno=?"; //1
         PreparedStatement ps;
         try {
             ps = cx.prepareStatement(sql); //2
@@ -136,7 +136,6 @@ public class AlumnoData {
         try {
             PreparedStatement ps = cx.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-
             while (rs.next()) {
                 al = new Alumno();
                 al.setId_alumno(rs.getInt("id_alumno"));
@@ -146,13 +145,12 @@ public class AlumnoData {
                 al.setEstado(rs.getBoolean("estado"));
                 al.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 listatmp.add(al);
-                
+             
             }
             ps.close();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Lista O consulta incorrecta, verifique");
         }
-
         return listatmp;
 
     }
