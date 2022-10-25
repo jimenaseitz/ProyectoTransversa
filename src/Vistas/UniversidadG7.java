@@ -36,7 +36,7 @@ public class UniversidadG7 {
         nuevo.setFecha_nacimiento(LocalDate.now());
         nuevo.setEstado(true);
         System.out.println("Envia alumno " + nuevo.getApellido());
-        dat.guardarAlumno(nuevo);//se realiza conexion y se envia datos
+        dat.guardarAlumno(nuevo);//se realiza conexion y se envia datos 
 
         nuevo.setApellido("Sanchez");
         nuevo.setNombre("Tomas");
