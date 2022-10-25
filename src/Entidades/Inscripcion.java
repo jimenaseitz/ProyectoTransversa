@@ -2,7 +2,7 @@ package Entidades;
 
 public class Inscripcion {
 
-    //private int id_materia;
+    private int id_inscripcion;
 
     private Materia materia; 
    
@@ -10,23 +10,33 @@ public class Inscripcion {
     private Alumno alumno;
     private int anio;
 
-    private boolean estado;
+    private double nota;
 
     public Inscripcion() {
     }
 
     
-    public Inscripcion(Materia materia, Alumno alumno, int anio, boolean estado) {
+    public Inscripcion(Materia materia, Alumno alumno, int anio, double nota) {
         this.materia = materia;
         this.alumno = alumno;
         this.anio = anio;
-        this.estado = estado;
+        this.nota = nota;
     }
 
     public Materia getMateria() {
         return materia;
     }
 
+    public int getId_inscripcion() {
+        return id_inscripcion;
+    }
+
+    public void setId_inscripcion(int id_inscripcion) {
+        this.id_inscripcion = id_inscripcion;
+    }
+
+    
+    
     public void setMateria(Materia materia) {
         this.materia = materia;
     }
@@ -47,13 +57,7 @@ public class Inscripcion {
         this.anio = anio;
     }
 
-    public boolean isEstado() {
-        return estado;
-    }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
 
     @Override
     public String toString() {
