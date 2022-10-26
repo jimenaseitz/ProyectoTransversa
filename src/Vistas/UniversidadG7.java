@@ -91,6 +91,7 @@ dat.actualizarAlumno(nuevo);
         Inscripcion i1=new Inscripcion (m1,aparains,m1.getAnio(),0);
         InscripcionData id= new InscripcionData();
         id.AltaIns(i1);
+        id.obtenerInscripcion(3,2);
         
 
         
