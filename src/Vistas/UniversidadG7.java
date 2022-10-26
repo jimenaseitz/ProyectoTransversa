@@ -6,9 +6,11 @@ package Vistas;
  * and open the template in the editor.
  */
 import Entidades.Alumno;
+import Entidades.Inscripcion;
 import Entidades.Materia;
 import java.time.LocalDate;
 import persistencia.AlumnoData;
+import persistencia.InscripcionData;
 import persistencia.MateriaData;
 
 /**
@@ -80,6 +82,19 @@ public class UniversidadG7 {
         System.out.println("actualiza datos por id = 1");
         dat.actualizarAlumno(nuevo);
 
+        //creo materia temporal
+        
+        Materia m1 = new Materia ("ingles 1 ", 1 ,1, true);
+        Materia m2 = new Materia ("lengua 2" ,1,2, true);
+        
+        
+         //public Inscripcion(Materia materia, Alumno alumno, int anio, double nota) {
+        Inscripcion i1=new Inscripcion (m1,nuevo,m1.getAnio(),0);
+        InscripcionData id= new InscripcionData();
+        id.guardarInscripcion(i1);
+        
+        
+        
         // dat.actualizarAlumno(nuevo);
         // AGREGAR MATERIA
         Materia ma = new Materia();
