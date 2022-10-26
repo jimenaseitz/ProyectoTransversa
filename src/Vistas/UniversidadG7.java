@@ -29,6 +29,8 @@ public class UniversidadG7 {
 
         //Conexion con = new Conexion();
         Alumno nuevo = new Alumno();
+        Alumno aparains= new Alumno();
+        
 
         nuevo.setApellido("SANCHEZ");
         nuevo.setNombre("TOMAS JOAQUIN");
@@ -42,7 +44,9 @@ public class UniversidadG7 {
         System.out.println("Envia alumno " + nuevo.getApellido());
         dat.guardarAlumno(nuevo);//se realiza conexion y se envia datos
 
-        nuevo.setApellido("Seitz");
+        aparains=nuevo;
+
+
         nuevo.setNombre("Pablo Javier");
         nuevo.setDni(22222222);
         nuevo.setFecha_nacimiento(LocalDate.now());
@@ -74,13 +78,11 @@ public class UniversidadG7 {
 
         ///ACTUALIZANDO ALUMNO POR CODIGO ID ALUMNO=1
         nuevo.setId_alumno(1);
-        nuevo.setApellido("LOPEZ");
+        nuevo.setApellido("LOPEZ-actualiza");
         nuevo.setNombre("RUBEN");
         nuevo.setDni(25555555);
         nuevo.setFecha_nacimiento(LocalDate.now());
         nuevo.setEstado(true);
-        System.out.println("actualiza datos por id = 1");
-        dat.actualizarAlumno(nuevo);
 
         //creo materia temporal
         
@@ -89,11 +91,11 @@ public class UniversidadG7 {
         
         
          //public Inscripcion(Materia materia, Alumno alumno, int anio, double nota) {
-        Inscripcion i1=new Inscripcion (m1,nuevo,m1.getAnio(),0);
+        Inscripcion i1=new Inscripcion (m1,aparains,m1.getAnio(),0);
         InscripcionData id= new InscripcionData();
         id.guardarInscripcion(i1);
         
-        
+
         
         // dat.actualizarAlumno(nuevo);
         // AGREGAR MATERIA
