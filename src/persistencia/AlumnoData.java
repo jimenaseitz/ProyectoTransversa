@@ -24,7 +24,6 @@ public class AlumnoData {
     }
 
     public void guardarAlumno(Alumno a) {
-
         try {
             String sql = "INSERT INTO `alumno`( `DNI`, `Apellido`, `Nombre`, `Fecha_nacimiento`, `Estado`) VALUES (?,?,?,?,?)";
             PreparedStatement ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

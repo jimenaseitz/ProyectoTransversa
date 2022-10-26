@@ -26,18 +26,19 @@ public class InscripcionData {
     public InscripcionData() {
         this.cx = Conexion.getConexion();
     }
+
     public void guardarInscripcion(Inscripcion in) {
-        //INSERT INTO inscripcion (id_alumno, id_materia) VALUES (?,?)
         
-        String sql = "INSERT INTO inscripcion (id_alumno, id_materia ) values(?,?)";
-        System.out.println("---------");
-        System.out.println(in);
-        PreparedStatement ps;
         try {
+            String sql = "INSERT INTO inscripcion (id_alumno, id_materia ) values(?,?)";
+            System.out.println("---------");
+            System.out.println(in);
+            PreparedStatement ps;
+
             ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, in.getAlumno().getId_alumno());
             ps.setInt(2, in.getMateria().getId_materia());
-            int bandera=ps.executeUpdate();
+            int bandera = ps.executeUpdate();
             System.out.println(bandera);
             if (bandera > 0) {
                 JOptionPane.showMessageDialog(null, "El Alumno fue inscripto de manera correcta");
@@ -50,17 +51,14 @@ public class InscripcionData {
                 in.setId_inscripcion(clave);
                 System.out.println(in);
             }
+            ps.close();
 
-         } catch (SQLException ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "VERIFIQUE DATOS -posible alumno existente ");
             //(java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
-
     }
 
-
- 
 }
-
