@@ -57,7 +57,7 @@ public class AlumnoData {
 
     public Alumno buscarAlumno(int id) {
         Alumno al = new Alumno();
-        String sql = "SELECT * FROM WHERE id_alumno=?"; //1
+        String sql = "SELECT * FROM alumno WHERE id_alumno=?"; //1
         PreparedStatement ps;
         try {
             ps = cx.prepareStatement(sql); //2

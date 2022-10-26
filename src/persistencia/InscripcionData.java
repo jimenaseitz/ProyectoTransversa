@@ -28,14 +28,16 @@ public class InscripcionData {
     }
 
     public void guardarInscripcion(Inscripcion in) {
-        
-        try {
-            String sql = "INSERT INTO inscripcion (id_alumno, id_materia ) values(?,?)";
-            System.out.println("---------");
-            System.out.println(in);
-            PreparedStatement ps;
 
-            ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        try {
+                
+            String sql = "INSERT INTO inscripcion (id_alumno, id_materia ) values(?,?)";
+            PreparedStatement ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            
+            
+            System.out.println(sql);
+            
+            
             ps.setInt(1, in.getAlumno().getId_alumno());
             ps.setInt(2, in.getMateria().getId_materia());
             int bandera = ps.executeUpdate();
@@ -49,16 +51,45 @@ public class InscripcionData {
             if (rs.next()) {
                 int clave = rs.getInt(1);
                 in.setId_inscripcion(clave);
-                System.out.println(in);
+
             }
+            System.out.println("Saliendo del bucle");
+            System.out.println(in);
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "VERIFIQUE DATOS -posible alumno existente ");
+            JOptionPane.showMessageDialog(null, "VERIFIQUE DATOS inscripciondata-posible alumno existente ");
             //(java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
-    }
+    }  
+    
+public void AltaIns(Inscripcion i) {
+        try {
+            String sql = "INSERT INTO inscripcion (id_alumno, id_materia ) values(?,?)";
+            PreparedStatement ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, i.getAlumno().getId_alumno());
+            ps.setInt(2, i.getMateria().getId_materia());
+             int agregoregistro = ps.executeUpdate();
+            String cartel;
+            if (agregoregistro > 0) {
+                JOptionPane.showMessageDialog(null, "Inscripcion Correcta");
+            } else {
+            JOptionPane.showMessageDialog(null, "no fue posible inscribir el alumno");
+            }
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                int clave = rs.getInt(1);
+                i.setId_inscripcion(clave);
+            }
+            System.out.println(i);
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR VERIFIQUE DATOS ");
+            //(java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+
 
 }

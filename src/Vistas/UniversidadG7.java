@@ -72,18 +72,15 @@ public class UniversidadG7 {
         System.out.println("BUSCA POR UN ID CORRECTO");
         System.out.println(dat.buscarAlumno(1));
 
-        ///ACTUALIZANDO ALUMNO POR DNI
-        nuevo.setId_alumno(6);
-        nuevo.setApellido("PP");
-
+      
         ///ACTUALIZANDO ALUMNO POR CODIGO ID ALUMNO=1
-        nuevo.setId_alumno(1);
+        nuevo.setId_alumno(3);
         nuevo.setApellido("LOPEZ-actualiza");
         nuevo.setNombre("RUBEN");
         nuevo.setDni(25555555);
         nuevo.setFecha_nacimiento(LocalDate.now());
         nuevo.setEstado(true);
-
+dat.actualizarAlumno(nuevo);
         //creo materia temporal
         
         Materia m1 = new Materia ("ingles 1 ", 1 ,1, true);
@@ -93,7 +90,7 @@ public class UniversidadG7 {
          //public Inscripcion(Materia materia, Alumno alumno, int anio, double nota) {
         Inscripcion i1=new Inscripcion (m1,aparains,m1.getAnio(),0);
         InscripcionData id= new InscripcionData();
-        id.guardarInscripcion(i1);
+        id.AltaIns(i1);
         
 
         
@@ -105,7 +102,7 @@ public class UniversidadG7 {
         ma.setEstado(true);
 
         MateriaData m = new MateriaData();
-        m.guardarMateria(ma);
+        //m.guardarMateria(ma);
 
     }
 }
