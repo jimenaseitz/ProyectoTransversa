@@ -109,7 +109,7 @@ dat.actualizarAlumno(nuevo);
         system.out.println(id.obtenerAlumnosInscriptos(m1));
         
         
-        /*
+        
         // dat.actualizarAlumno(nuevo);
         // AGREGAR MATERIA
         Materia ma = new Materia();
@@ -119,6 +119,6 @@ dat.actualizarAlumno(nuevo);
 
         MateriaData m = new MateriaData();
         m.guardarMateria(ma);
-*/
+
     }
 }

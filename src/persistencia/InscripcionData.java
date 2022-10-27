@@ -113,7 +113,7 @@ public class InscripcionData {
     }
 
     public ArrayList obtenerMateriasInscriptas(Alumno al) {
-        ArrayList<Alumno> ma = new ArrayList();
+        ArrayList<Materia> ma = new ArrayList();
         Materia mattemp;
         System.out.println(al.getId_alumno());
         try {
@@ -167,8 +167,18 @@ public class InscripcionData {
     public ArrayList obtenerAlumnosInscriptos(Materia mat){
         ArrayList lista = new ArrayList();
         Alumno tempalum;
-        String sql="";
+        try {
+        String sql="SELECT * FROM materia  WHERE estado=true and  id_materia IN ( SELECT id_materia FROM inscripcion WHERE id_alumno =4) ";    
+        } catch (Exception e) {
+        }
+        
+        
+        
         return lista;
     }
+    
+    
+    
+    
     
 }
