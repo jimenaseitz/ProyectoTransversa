@@ -138,13 +138,15 @@ public class InscripcionData {
         return ma;
     }
 
-    public ArrayList obtenerMateriasNoInscriptas(Materia ma) {
-        ArrayList<Alumno> la = new ArrayList();
+    public ArrayList obtenerMateriasNoInscriptas(Alumno al) {
+        ArrayList<Materia> ma = new ArrayList();
         Materia mattemp;
         try {
-            String sql ="SELECT * FROM materia  WHERE id_materia IN ( SELECT id_alumno FROM inscripcion WHERE id_alumno =4)";
+            String sql = "SELECT * FROM materia  WHERE id_materia NOT IN"
+                    + " ( SELECT id_materia FROM inscripcion WHERE id_alumno = ?)"
+                    + " and materia.estado=true";
             PreparedStatement ps = cx.prepareStatement(sql);
-            ps.setInt(1, ma.getId_alumno());
+            ps.setInt(1, al.getId_alumno());
             ResultSet rs = ps.executeQuery();
             System.out.println(rs.wasNull());
             while (rs.next()) {
