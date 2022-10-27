@@ -35,8 +35,10 @@ public class UniversidadG7 {
         nuevo.setApellido("SANCHEZ");
         nuevo.setNombre("TOMAS JOAQUIN");
         nuevo.setDni(44444444);
+
 //se dan de alta alumnos en bd
-        nuevo.setApellido("Lopez Pujato");
+
+    nuevo.setApellido("Lopez Pujato");
         nuevo.setNombre("Pablo Javier");
         nuevo.setDni(11111111);
         nuevo.setFecha_nacimiento(LocalDate.now());
@@ -48,7 +50,7 @@ public class UniversidadG7 {
 
 
         nuevo.setNombre("Pablo Javier");
-        nuevo.setDni(22222222);
+        nuevo.setDni(123);
         nuevo.setFecha_nacimiento(LocalDate.now());
         nuevo.setEstado(true);
         System.out.println("Envia alumno " + nuevo.getApellido());
@@ -90,11 +92,21 @@ dat.actualizarAlumno(nuevo);
          //public Inscripcion(Materia materia, Alumno alumno, int anio, double nota) {
         Inscripcion i1=new Inscripcion (m1,aparains,m1.getAnio(),0);
         InscripcionData id= new InscripcionData();
-        id.AltaIns(i1);
-        id.obtenerInscripcion(3,2);
         
-
+       
+        id.guardarInscripcion(i1);
+        id.obtenerInscripcion(3,2); 
+        id.borrarInscripcion(5, 2);
+        id.borrarInscripcion(3, 1);
+        id.actualizarNota(4, 1, 10);//actualizo nota alumno inscripcion
+        id.actualizarNota(4, 15, 10); //materia inexistente
+        System.out.println("alumno"+aparains);
+        System.out.println("---Muestra Materias inscriptas---");
+        System.out.println(id.obtenerMateriasInscriptas(aparains));
+        System.out.println("-Muestras materias no inscriptas-");
+        System.out.println(id.obtenerMateriasNoInscriptas(aparains));
         
+        /*
         // dat.actualizarAlumno(nuevo);
         // AGREGAR MATERIA
         Materia ma = new Materia();
@@ -103,7 +115,7 @@ dat.actualizarAlumno(nuevo);
         ma.setEstado(true);
 
         MateriaData m = new MateriaData();
-        //m.guardarMateria(ma);
-
+        m.guardarMateria(ma);
+*/
     }
 }
