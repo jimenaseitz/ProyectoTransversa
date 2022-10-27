@@ -88,7 +88,6 @@ public class InscripcionData {
             } else {
                 JOptionPane.showMessageDialog(null, "no se encuentra la inscripcion");
             }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error en sentencia verificar sql - inscripciondata");
         }
@@ -114,7 +113,7 @@ public class InscripcionData {
     }
 
     public ArrayList obtenerMateriasInscriptas(Alumno al) {
-        ArrayList<Materia> ma = new ArrayList();
+        ArrayList<Alumno> ma = new ArrayList();
         Materia mattemp;
         System.out.println(al.getId_alumno());
         try {
@@ -168,7 +167,7 @@ public class InscripcionData {
     public ArrayList obtenerAlumnosInscriptos(Materia maT){
         ArrayList lista = new ArrayList();
         Alumno tempalum;
-        string sql=""
+        string sql="";
         return lista;
     }
     

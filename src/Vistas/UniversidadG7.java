@@ -77,7 +77,7 @@ public class UniversidadG7 {
       
         ///ACTUALIZANDO ALUMNO POR CODIGO ID ALUMNO=1
         nuevo.setId_alumno(3);
-        nuevo.setApellido("LOPEZ-actualiza");
+        nuevo.setApellido("LOPEz");
         nuevo.setNombre("RUBEN");
         nuevo.setDni(25555555);
         nuevo.setFecha_nacimiento(LocalDate.now());
@@ -87,6 +87,7 @@ dat.actualizarAlumno(nuevo);
         
         Materia m1 = new Materia ("ingles 1 ", 1 ,1, true);
         Materia m2 = new Materia ("lengua 2" ,1,2, true);
+        //Agrego materia//
         
         
          //public Inscripcion(Materia materia, Alumno alumno, int anio, double nota) {
@@ -105,6 +106,8 @@ dat.actualizarAlumno(nuevo);
         System.out.println(id.obtenerMateriasInscriptas(aparains));
         System.out.println("-Muestras materias no inscriptas-");
         System.out.println(id.obtenerMateriasNoInscriptas(aparains));
+        system.out.println(id.obtenerAlumnosInscriptos(m1));
+        
         
         /*
         // dat.actualizarAlumno(nuevo);
