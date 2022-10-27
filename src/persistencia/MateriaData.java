@@ -25,7 +25,7 @@ public class MateriaData {
      private Connection cx;
 
     public MateriaData() {
-        this.cx = cx;
+        this.cx = Conexion.getConexion();
     }
      public void guardarMateria(Materia m) {
 
