@@ -74,7 +74,7 @@ public class UniversidadG7 {
         System.out.println("BUSCA POR UN ID CORRECTO");
         System.out.println(dat.buscarAlumno(1));
 
-      
+      dat.borrarAlumno(75);
         ///ACTUALIZANDO ALUMNO POR CODIGO ID ALUMNO=1
         nuevo.setId_alumno(3);
         nuevo.setApellido("LOPEz");
