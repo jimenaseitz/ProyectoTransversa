@@ -108,22 +108,22 @@ public class AlumnoData {
 
     }//Actualizar un alumno
 
-    public void borrarAlumno(int id, boolean condicion) {//borrado logico
-        String sql = "UPDATE alumno SET estado=? where id_alumno=?";
+    public void borrarAlumno(int id) {//borrado logico
+        String sql = "UPDATE alumno SET estado=false where id_alumno=?";
         PreparedStatement ps;
         try {
             ps = cx.prepareStatement(sql);
-            ps.setBoolean(1, condicion);
-            ps.setInt(2, id);
+            
+            ps.setInt(1, id);
             if (ps.executeUpdate() > 0) {
-                JOptionPane.showMessageDialog(null, "SE REALIZÓ BORRADO LOGICO");
+                JOptionPane.showMessageDialog(null, "EL ALUMNO FUE BORRADO");
 
             } else {
-                JOptionPane.showMessageDialog(null, "el id ingresado no se encuentra - verifique");
+                JOptionPane.showMessageDialog(null, "verifique");
             }
-
+ps.close();
         } catch (SQLException ex) {
-            System.out.println("Error en sentencia verifique sql");
+            System.out.println("Error en sentencia verifique sqlBORARALUMNO");
         }
 
     }

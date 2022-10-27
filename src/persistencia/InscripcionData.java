@@ -164,10 +164,10 @@ public class InscripcionData {
         return ma;
     }
     
-    public ArrayList obtenerAlumnosInscriptos(Materia maT){
+    public ArrayList obtenerAlumnosInscriptos(Materia mat){
         ArrayList lista = new ArrayList();
         Alumno tempalum;
-        string sql="";
+        String sql="";
         return lista;
     }
     
