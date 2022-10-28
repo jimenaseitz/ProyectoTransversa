@@ -27,14 +27,12 @@ public class MateriaData {
     }
 
     public void guardarMateria(Materia m) {
-
         try {
             String sql = "INSERT INTO `materia`( `Nombre`,`anio`,`Estado`) VALUES (?,?,?)";
             PreparedStatement ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, m.getNombre());
             ps.setInt(2, m.getAnio());
             ps.setBoolean(3, m.getEstado());
-
             int agregoregistro = ps.executeUpdate();
             String cartel;
             if (agregoregistro > 0) {
@@ -44,18 +42,12 @@ public class MateriaData {
             }
             JOptionPane.showMessageDialog(null, cartel);
             ResultSet rs = ps.getGeneratedKeys();
-
             if (rs.next()) {
                 int clave = rs.getInt(1);
                 m.setId_materia(clave);
-
-                System.out.println(m);
-                cx.close();
-            }
-            System.out.println(m);
+                }
             cx.close();
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "NO SE HA PODIDO GUARDAR LA MATERIA - VERIFIQUE");
         }
 
@@ -74,9 +66,7 @@ public class MateriaData {
             } else {
                 JOptionPane.showMessageDialog(null, "NO EXISTE LA MATERIA - VERIFIQUE");
             }
-
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ACTUALIZAR LA MATERIA - VERIFIQUE");
         }
@@ -109,7 +99,6 @@ public class MateriaData {
         PreparedStatement ps;
         try {
             ps = cx.prepareStatement(sql);
-
             ps.setInt(1, id);
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "LA MATERIA FUE BORRADA");
@@ -120,7 +109,6 @@ public class MateriaData {
         } catch (SQLException ex) {
             System.out.println("Error en sentencia verifique sqlBORRARMATERIA");
         }
-
     }
 
     public ArrayList buscaMaterias() {
