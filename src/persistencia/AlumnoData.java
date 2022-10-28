@@ -48,9 +48,16 @@ public class AlumnoData {
             System.out.println(a);
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "verifiqueDatos");
-            //(java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
+             if (ex.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "El alumno ya se encuentra ingresad0 - verifique");
+            } else {
+                if (ex.getErrorCode() == 1452) {
+                    JOptionPane.showMessageDialog(null, "El Alumno no inexiste - verifique");
 
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
+                }
+             }
         }
 
     }
@@ -102,8 +109,17 @@ public class AlumnoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " VERIFIQUE-ActualizarAlumno");
+            
+             if (ex.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "El alumno ya se encuentra actualizado con esos datos - verifique");
+            } else {if (ex.getErrorCode() == 1452) {
+                    JOptionPane.showMessageDialog(null, "El Alumno no inexiste - verifique");
 
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
+                }
+             }
+           
         }
 
     }//Actualizar un alumno
