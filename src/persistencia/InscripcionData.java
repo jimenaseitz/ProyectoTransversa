@@ -79,7 +79,14 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Verifique Sentencia -BuscarInscripcion");
+            if (ex.getErrorCode() == 1452) {
+                    JOptionPane.showMessageDialog(null, "La inscripcion es inexistente - verifique");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
+                }
+
+            System.out.println(ex.getErrorCode());
         }
 
         return i;
@@ -116,7 +123,14 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EN CONSULTA - actualizarnota");
+             if (ex.getErrorCode() == 1452) {
+                    JOptionPane.showMessageDialog(null, "La matreria o Alumno son inexistentes - verifique");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
+                }
+
+            System.out.println(ex.getErrorCode());
         }
     }
 
