@@ -85,7 +85,7 @@ public class UniversidadG7 {
         m1.setId_materia(84);
         m.actualizarMateria(m1);
         m1.setId_materia(86);
-       
+       nuevo.setId_alumno(123);
         InscripcionData id = new InscripcionData();
         Inscripcion i1 = new Inscripcion(m1, nuevo, m1.getAnio(), 0);
         id.guardarInscripcion(i1);

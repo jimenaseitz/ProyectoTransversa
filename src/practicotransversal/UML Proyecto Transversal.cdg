@@ -99,7 +99,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Materia" package="Entidades" visibility="public" xPosition="991.0" yPosition="670.0">
+    <Class name="Materia" package="Entidades" visibility="public" xPosition="951.0" yPosition="616.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="anio" type="int" visibility="private"/>
@@ -142,7 +142,7 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="materia" source="Entidades.Inscripcion" target="Entidades.Materia" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..*" collectionType="List"/>
     <HasRelation name="alumno" source="Entidades.Inscripcion" target="Entidades.Alumno" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="materia" source="Entidades.Inscripcion" target="Entidades.Materia" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..*" collectionType="List"/>
   </ClassDiagramRelations>
 </ClassDiagram>

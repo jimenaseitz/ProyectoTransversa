@@ -29,7 +29,7 @@ public class InscripcionData {
             ps.setInt(2, in.getMateria().getId_materia());
             ps.setLong(3, 0);
             int bandera = ps.executeUpdate();
-    
+
             if (bandera > 0) {
                 JOptionPane.showMessageDialog(null, "INSCRIPTO");
             } else {
@@ -42,8 +42,21 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Ver Sentencia - guardarInscripción ");
- 
+
+            if (ex.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "La inscripción ya se encuentra ingresada - verifique");
+            } else {
+                if (ex.getErrorCode() == 1452) {
+                    JOptionPane.showMessageDialog(null, "La Materia o Alumno son inexistentes - verifique");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
+                }
+
+            }
+
+            System.out.println(ex.getErrorCode());
+
         }
     }
 
@@ -68,7 +81,7 @@ public class InscripcionData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Verifique Sentencia -BuscarInscripcion");
         }
-       
+
         return i;
     }
 
@@ -110,17 +123,17 @@ public class InscripcionData {
     public ArrayList obtenerMateriasInscriptas(Alumno al) {
         ArrayList<Materia> ma = new ArrayList();
         Materia mattemp;
-        MateriaData m=new MateriaData();
+        MateriaData m = new MateriaData();
         try {
             String sql = "SELECT * FROM inscripcion Where id_alumno=?";
             PreparedStatement ps = cx.prepareStatement(sql);
             ps.setInt(1, al.getId_alumno());
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-             mattemp=new Materia();
-                mattemp=m.buscarMateria(rs.getInt("id_materia"));
+                mattemp = new Materia();
+                mattemp = m.buscarMateria(rs.getInt("id_materia"));
                 ma.add(mattemp);
-}
+            }
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error en consulta - obtenermateriasinscriptas");
@@ -154,7 +167,7 @@ public class InscripcionData {
     }
 
     public ArrayList obtenerAlumnosInscriptos(Materia mat) {
-        ArrayList <Alumno> listaAlumno = new ArrayList();
+        ArrayList<Alumno> listaAlumno = new ArrayList();
         Alumno tmpalum;
         try {
             String sql = "SELECT * FROM alumno  WHERE estado=true and  id_alumno IN ( SELECT id_alumno FROM inscripcion WHERE id_materia=?)";
@@ -178,4 +191,3 @@ public class InscripcionData {
         return listaAlumno;
     }
 }
-
