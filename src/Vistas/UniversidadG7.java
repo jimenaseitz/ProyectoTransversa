@@ -80,7 +80,8 @@ public class UniversidadG7 {
         Inscripcion i1=new Inscripcion (m1,aparains,m1.getAnio(),0);
         InscripcionData id= new InscripcionData();
         id.guardarInscripcion(i1);
-        id.obtenerInscripcion(3,2); 
+        System.out.println("Optiene inscripcion de una materia");
+        System.out.println(id.obtenerInscripcion(3,2));
         id.borrarInscripcion(5, 2);
     
         id.actualizarNota(4, 1, 10);//actualizo nota alumno inscripcion

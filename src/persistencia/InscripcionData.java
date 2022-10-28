@@ -60,7 +60,7 @@ public class InscripcionData {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 i.setAlumno(al.buscarAlumno(rs.getInt("id_alumno")));
-                //    i.setMateria(mat.buscarMateria(rs.getInt("id_materia")));
+                i.setMateria(mat.buscarMateria(rs.getInt("id_materia")));
             } else {
                 JOptionPane.showMessageDialog(null, "no se encontraron registros");
             }
@@ -110,6 +110,7 @@ public class InscripcionData {
     public ArrayList obtenerMateriasInscriptas(Alumno al) {
         ArrayList<Materia> ma = new ArrayList();
         Materia mattemp;
+        MateriaData m=new MateriaData();
         try {
             String sql = "SELECT * FROM inscripcion Where id_alumno=?";
             PreparedStatement ps = cx.prepareStatement(sql);
@@ -118,8 +119,9 @@ public class InscripcionData {
             while (rs.next()) {
                 mattemp = new Materia();
                 mattemp.setId_materia(rs.getInt("id_materia"));
-//falta terminar se necesita método buscarMateria()
-                System.out.println("completar con método buscar materia");
+                mattemp.setNombre(m.buscarMateria(mattemp.getId_materia()).getNombre());
+                mattemp.setAnio(m.buscarMateria(mattemp.getId_materia()).getAnio());
+                mattemp.setEstado(m.buscarMateria(mattemp.getId_materia()).getEstado());
                 ma.add(mattemp);
             }
 
@@ -141,19 +143,15 @@ public class InscripcionData {
             PreparedStatement ps = cx.prepareStatement(sql);
             ps.setInt(1, al.getId_alumno());
             ResultSet rs = ps.executeQuery();
-            System.out.println(rs.wasNull());
             while (rs.next()) {
                 mattemp = new Materia();
                 mattemp.setId_materia(rs.getInt("id_materia"));
-//falta terminar se necesita método buscarMateria()
                 ma.add(mattemp);
             }
-
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error en consulta - obtenermateriasinscriptas");
         }
-
         return ma;
     }
 
