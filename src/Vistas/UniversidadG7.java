@@ -53,7 +53,6 @@ public class UniversidadG7 {
         System.out.println("Envia alumno " + nuevo.getApellido());
         dat.guardarAlumno(nuevo);//se realiza conexion y se envia datos
 
-
         ///ACTUALIZANDO ALUMNO POR CODIGO ID ALUMNO=1
         nuevo.setId_alumno(201);
         nuevo.setApellido("Seitz-Actualizada");
@@ -64,7 +63,6 @@ public class UniversidadG7 {
         dat.actualizarAlumno(nuevo);
 
         //BUSCANDO ALUMNO POR ID///
-       
         dat.borrarAlumno(317);
 
         //creo materia temporal
@@ -85,7 +83,7 @@ public class UniversidadG7 {
         m1.setId_materia(84);
         m.actualizarMateria(m1);
         m1.setId_materia(86);
-       nuevo.setId_alumno(123);
+        nuevo.setId_alumno(123);
         InscripcionData id = new InscripcionData();
         Inscripcion i1 = new Inscripcion(m1, nuevo, m1.getAnio(), 0);
         id.guardarInscripcion(i1);

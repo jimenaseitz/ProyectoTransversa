@@ -43,7 +43,7 @@ public class AlumnoData {
             System.out.println(a);
             ps.close();
         } catch (SQLException ex) {
-             if (ex.getErrorCode() == 1062) {
+            if (ex.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "El alumno ya se encuentra ingresado - verifique");
             } else {
                 if (ex.getErrorCode() == 1452) {
@@ -52,7 +52,7 @@ public class AlumnoData {
                 } else {
                     JOptionPane.showMessageDialog(null, "Error en sentencia ");
                 }
-             }
+            }
         }
 
     }
@@ -78,14 +78,12 @@ public class AlumnoData {
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Verifique Sentencia -buscarAlumno");
-//Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return al;
     }
 
     public void actualizarAlumno(Alumno a) {
 
-        //   public Alumno( int id_alumno, String nombre, String apellido, long dni, LocalDate fecha_nacimiento, boolean estado) {
         String query = "UPDATE alumno set nombre=?, apellido=?,  dni=?, fecha_nacimiento=?, estado=? where id_alumno=?"; //1
         PreparedStatement ps;
         try {
@@ -104,17 +102,18 @@ public class AlumnoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            
-             if (ex.getErrorCode() == 1062) {
+
+            if (ex.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "El alumno ya se encuentra actualizado con esos datos - verifique");
-            } else {if (ex.getErrorCode() == 1452) {
+            } else {
+                if (ex.getErrorCode() == 1452) {
                     JOptionPane.showMessageDialog(null, "El Alumno no inexiste - verifique");
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Error en sentencia ");
                 }
-             }
-           
+            }
+
         }
 
     }//Actualizar un alumno
@@ -124,7 +123,7 @@ public class AlumnoData {
         PreparedStatement ps;
         try {
             ps = cx.prepareStatement(sql);
-            
+
             ps.setInt(1, id);
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "EL ALUMNO FUE BORRADO");
@@ -132,7 +131,7 @@ public class AlumnoData {
             } else {
                 JOptionPane.showMessageDialog(null, "No fue posible actualizar");
             }
-ps.close();
+            ps.close();
         } catch (SQLException ex) {
             System.out.println("Error en sentencia verifique sqlBORARALUMNO");
         }
@@ -155,7 +154,7 @@ ps.close();
                 al.setEstado(rs.getBoolean("estado"));
                 al.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 listatmp.add(al);
-             
+
             }
             ps.close();
         } catch (Exception ex) {

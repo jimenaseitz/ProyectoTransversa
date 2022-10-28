@@ -34,7 +34,7 @@ public class MateriaData {
             ps.setInt(2, m.getAnio());
             ps.setBoolean(3, m.getEstado());
             int agregoregistro = ps.executeUpdate();
-            
+
             String cartel;
             if (agregoregistro > 0) {
                 cartel = "La materia fue agregada";
@@ -46,17 +46,17 @@ public class MateriaData {
             if (rs.next()) {
                 int clave = rs.getInt(1);
                 m.setId_materia(clave);
-                }
+            }
             ps.close();
         } catch (SQLException ex) {
             if (ex.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "La materia ya se encuentra ingresada - verifique");
             } else if (ex.getErrorCode() == 1452) {
-                    JOptionPane.showMessageDialog(null, "La inscripcion o Alumno son inexistentes - verifique");
+                JOptionPane.showMessageDialog(null, "La inscripcion o Alumno son inexistentes - verifique");
 
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
-                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en sentencia ");
+            }
 
             System.out.println(ex.getErrorCode());
         }
@@ -64,7 +64,7 @@ public class MateriaData {
     }
 
     public void actualizarMateria(Materia m) {
-        String query = "UPDATE materia set nombre=?, anio=?, estado=? where id_materia=?"; 
+        String query = "UPDATE materia set nombre=?, anio=?, estado=? where id_materia=?";
         try {
             PreparedStatement ps = cx.prepareStatement(query);
             ps.setString(1, m.getNombre());
@@ -81,11 +81,11 @@ public class MateriaData {
             if (ex.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "La materia ya se encuentra ingresada - verifique");
             } else if (ex.getErrorCode() == 1452) {
-                    JOptionPane.showMessageDialog(null, "La inscripcion o Alumno son inexistentes - verifique");
+                JOptionPane.showMessageDialog(null, "La inscripcion o Alumno son inexistentes - verifique");
 
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
-                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en sentencia ");
+            }
 
             System.out.println(ex.getErrorCode());
         }
@@ -93,10 +93,10 @@ public class MateriaData {
 
     public Materia buscarMateria(int id) {
         Materia ma = new Materia();
-        String sql = "SELECT * FROM materia WHERE id_materia=? and estado=1"; 
+        String sql = "SELECT * FROM materia WHERE id_materia=? and estado=1";
         PreparedStatement ps;
         try {
-            ps = cx.prepareStatement(sql); 
+            ps = cx.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

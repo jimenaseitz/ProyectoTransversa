@@ -18,7 +18,7 @@ public class InscripcionData {
     public InscripcionData() {
         this.cx = Conexion.getConexion();
     }
-    
+
     public void guardarInscripcion(Inscripcion in) {
         try {
             String sql = "INSERT INTO inscripcion (id_alumno, id_materia, nota ) values(?,?,?)";
@@ -60,7 +60,7 @@ public class InscripcionData {
     }
 
     public Inscripcion obtenerInscripcion(int a, int m) {
-//public void obtenerInscripcion (int  a,id materia){
+
         Inscripcion i = new Inscripcion();
         AlumnoData al = new AlumnoData();
         MateriaData mat = new MateriaData();
@@ -79,11 +79,11 @@ public class InscripcionData {
             ps.close();
         } catch (SQLException ex) {
             if (ex.getErrorCode() == 1452) {
-                    JOptionPane.showMessageDialog(null, "La inscripcion es inexistente - verifique");
+                JOptionPane.showMessageDialog(null, "La inscripcion es inexistente - verifique");
 
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
-                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en sentencia ");
+            }
 
             System.out.println(ex.getErrorCode());
         }
@@ -122,12 +122,12 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-             if (ex.getErrorCode() == 1452) {
-                    JOptionPane.showMessageDialog(null, "La matreria o Alumno son inexistentes - verifique");
+            if (ex.getErrorCode() == 1452) {
+                JOptionPane.showMessageDialog(null, "La matreria o Alumno son inexistentes - verifique");
 
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
-                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en sentencia ");
+            }
 
             System.out.println(ex.getErrorCode());
         }
