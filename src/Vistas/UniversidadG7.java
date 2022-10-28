@@ -34,7 +34,7 @@ public class UniversidadG7 {
         nuevo.setEstado(true);
         System.out.println("Envia alumno " + nuevo.getApellido());
         dat.guardarAlumno(nuevo);//se realiza conexion y se envia datos
-        aparains = nuevo;
+        aparains = nuevo;       
 
         nuevo.setNombre("Seitz");
         nuevo.setNombre("Jimena");
@@ -83,7 +83,6 @@ public class UniversidadG7 {
         m1.setId_materia(84);
         m.actualizarMateria(m1);
         m1.setId_materia(86);
-        nuevo.setId_alumno(123);
         InscripcionData id = new InscripcionData();
         Inscripcion i1 = new Inscripcion(m1, nuevo, m1.getAnio(), 0);
         id.guardarInscripcion(i1);
@@ -96,11 +95,11 @@ public class UniversidadG7 {
         id.borrarInscripcion(5, 2);
 
         id.actualizarNota(4, 1, 10);//actualizo nota alumno inscripcion
-        System.out.println("alumno" + aparains);
+        System.out.println("alumno" + nuevo);
         System.out.println("---Muestra Materias inscriptas---");
-        System.out.println(id.obtenerMateriasInscriptas(aparains));
+        System.out.println(id.obtenerMateriasInscriptas(nuevo));
         System.out.println("-Muestras materias no inscriptas-");
-        System.out.println(id.obtenerMateriasNoInscriptas(aparains));
+        System.out.println(id.obtenerMateriasNoInscriptas(nuevo));
         System.out.println("Alumnos Inscriptos a materia:  " + m1);
         System.out.println(id.obtenerAlumnosInscriptos(m1));
 
