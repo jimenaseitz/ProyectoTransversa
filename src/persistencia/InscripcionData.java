@@ -3,7 +3,6 @@ package persistencia;
 import Entidades.Alumno;
 import Entidades.Inscripcion;
 import Entidades.Materia;
-import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +18,7 @@ public class InscripcionData {
     public InscripcionData() {
         this.cx = Conexion.getConexion();
     }
-
+    
     public void guardarInscripcion(Inscripcion in) {
         try {
             String sql = "INSERT INTO inscripcion (id_alumno, id_materia, nota ) values(?,?,?)";

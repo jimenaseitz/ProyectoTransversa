@@ -1,8 +1,6 @@
 package persistencia;
 
 import Entidades.*;
-import Vistas.UniversidadG7;
-import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -10,10 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import sun.util.logging.PlatformLogger;
 
 public class AlumnoData {
 
@@ -49,7 +44,7 @@ public class AlumnoData {
             ps.close();
         } catch (SQLException ex) {
              if (ex.getErrorCode() == 1062) {
-                JOptionPane.showMessageDialog(null, "El alumno ya se encuentra ingresad0 - verifique");
+                JOptionPane.showMessageDialog(null, "El alumno ya se encuentra ingresado - verifique");
             } else {
                 if (ex.getErrorCode() == 1452) {
                     JOptionPane.showMessageDialog(null, "El Alumno no inexiste - verifique");

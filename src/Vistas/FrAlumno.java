@@ -233,9 +233,9 @@ public class FrAlumno extends javax.swing.JInternalFrame {
 
     private void BxGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxGuardarActionPerformed
        
-        Alumno alumno = new Alumno(this.TxDNI.getText(),this.TxApellido.getText(),this.TxNombre.getText(),this.TxFechaDeNacimiento.getText(),this.BxEstado.action(true, ui));
+       // Alumno alumno = new Alumno(this.TxDNI.getText(),this.TxApellido.getText(),this.TxNombre.getText(),this.TxFechaDeNacimiento.getText(),this.BxEstado.action(true, ui)); 
  
-        this.al.guardarAlumno(alumno);// TODO add your handling code here:
+       // this.al.guardarAlumno(alumno);// TODO add your handling code here:
     }//GEN-LAST:event_BxGuardarActionPerformed
 
 
