@@ -34,6 +34,7 @@ public class MateriaData {
             ps.setInt(2, m.getAnio());
             ps.setBoolean(3, m.getEstado());
             int agregoregistro = ps.executeUpdate();
+            
             String cartel;
             if (agregoregistro > 0) {
                 cartel = "La materia fue agregada";
@@ -46,7 +47,7 @@ public class MateriaData {
                 int clave = rs.getInt(1);
                 m.setId_materia(clave);
                 }
-            cx.close();
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "NO SE HA PODIDO GUARDAR LA MATERIA - VERIFIQUE");
         }
@@ -84,6 +85,7 @@ public class MateriaData {
                 ma.setId_materia(id);
                 ma.setNombre(rs.getString("nombre"));
                 ma.setEstado(rs.getBoolean("estado"));
+                ma.setAnio(rs.getInt("anio"));
             } else {
                 JOptionPane.showMessageDialog(null, "Materia no encontrada");
             }

@@ -117,19 +117,14 @@ public class InscripcionData {
             ps.setInt(1, al.getId_alumno());
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                mattemp = new Materia();
-                mattemp.setId_materia(rs.getInt("id_materia"));
-                mattemp.setNombre(m.buscarMateria(mattemp.getId_materia()).getNombre());
-                mattemp.setAnio(m.buscarMateria(mattemp.getId_materia()).getAnio());
-                mattemp.setEstado(m.buscarMateria(mattemp.getId_materia()).getEstado());
+             mattemp=new Materia();
+                mattemp=m.buscarMateria(rs.getInt("id_materia"));
                 ma.add(mattemp);
-            }
-
+}
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error en consulta - obtenermateriasinscriptas");
         }
-
         return ma;
     }
 
@@ -146,6 +141,9 @@ public class InscripcionData {
             while (rs.next()) {
                 mattemp = new Materia();
                 mattemp.setId_materia(rs.getInt("id_materia"));
+                mattemp.setNombre(rs.getString("nombre"));
+                mattemp.setAnio(rs.getInt("anio"));
+                mattemp.setEstado(rs.getBoolean("estado"));
                 ma.add(mattemp);
             }
             ps.close();
@@ -163,11 +161,10 @@ public class InscripcionData {
             PreparedStatement ps = cx.prepareStatement(sql);
             ps.setInt(1, mat.getId_materia());
             ResultSet rs = ps.executeQuery();
-            System.out.println(rs.wasNull());
             while (rs.next()) {
                 tmpalum = new Alumno();
                 tmpalum.setId_alumno(rs.getInt("id_alumno"));
-                tmpalum.setApellido(rs.getString("nombre"));
+                tmpalum.setApellido(rs.getString("apellido"));
                 tmpalum.setNombre(rs.getString("nombre"));
                 tmpalum.setDni(rs.getInt("dni"));
                 tmpalum.setEstado(rs.getBoolean("estado"));
@@ -176,7 +173,7 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error en sentencia");
+            JOptionPane.showMessageDialog(null, "verSQL obtener alumnos inscriptos");
         }
         return listaAlumno;
     }
