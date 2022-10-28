@@ -24,29 +24,26 @@ public class InscripcionData {
         try {
             String sql = "INSERT INTO inscripcion (id_alumno, id_materia, nota ) values(?,?,?)";
             PreparedStatement ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            System.out.println(sql);
-            System.out.println(in.getAlumno().getId_alumno() + " -id mat: " + in.getMateria().getId_materia());
+
             ps.setInt(1, in.getAlumno().getId_alumno());
             ps.setInt(2, in.getMateria().getId_materia());
             ps.setLong(3, 0);
             int bandera = ps.executeUpdate();
-            System.out.println("imprime el valor de la bandera: " + bandera);
+    
             if (bandera > 0) {
                 JOptionPane.showMessageDialog(null, "INSCRIPTO");
             } else {
-                JOptionPane.showMessageDialog(null, "No se ha podidio inscribir - VERIFIQUE ");
+                JOptionPane.showMessageDialog(null, "no es posible inscribir - VERIFIQUE ");
             }
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 int clave = rs.getInt(1);
                 in.setId_inscripcion(clave);
             }
-            System.out.println("Saliendo del bucle");
-            System.out.println(in);
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "VERIFIQUE-InscripcionData ");
-            //(java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Ver Sentencia - guardarInscripción ");
+ 
         }
     }
 
@@ -71,8 +68,7 @@ public class InscripcionData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Verifique Sentencia -BuscarInscripcion");
         }
-        System.out.println("Obtiene inscripcion desde un alumnoyMateria");
-        System.out.println(i);
+       
         return i;
     }
 
@@ -86,10 +82,10 @@ public class InscripcionData {
             if (bandera > 0) {
                 JOptionPane.showMessageDialog(null, "La inscripción fue eliminada con éxito");
             } else {
-                JOptionPane.showMessageDialog(null, "no se encuentra la inscripcion");
+                JOptionPane.showMessageDialog(null, "no se encuentra inscripto");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error en sentencia verificar sql - inscripciondata");
+            JOptionPane.showMessageDialog(null, "Error en sentencia - borrarinscripcion");
         }
     }
 
@@ -103,19 +99,17 @@ public class InscripcionData {
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "La Nota se ha Actualizado");
             } else {
-                JOptionPane.showMessageDialog(null, "inscripcion no encontrada - Verifique");
+                JOptionPane.showMessageDialog(null, "Alumno/materia no encontrada -Actualizar Nota");
             }
             ps.close();
-
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EN CONSULTA - actualizarnota-Inscripcion");
+            JOptionPane.showMessageDialog(null, "ERROR EN CONSULTA - actualizarnota");
         }
     }
 
     public ArrayList obtenerMateriasInscriptas(Alumno al) {
         ArrayList<Materia> ma = new ArrayList();
         Materia mattemp;
-        System.out.println(al.getId_alumno());
         try {
             String sql = "SELECT * FROM inscripcion Where id_alumno=?";
             PreparedStatement ps = cx.prepareStatement(sql);
@@ -127,7 +121,6 @@ public class InscripcionData {
 //falta terminar se necesita método buscarMateria()
                 System.out.println("completar con método buscar materia");
                 ma.add(mattemp);
-                System.out.println("entra");
             }
 
             ps.close();
@@ -163,22 +156,31 @@ public class InscripcionData {
 
         return ma;
     }
-    
-    public ArrayList obtenerAlumnosInscriptos(Materia mat){
-        ArrayList lista = new ArrayList();
-        Alumno tempalum;
+
+    public ArrayList obtenerAlumnosInscriptos(Materia mat) {
+        ArrayList <Alumno> listaAlumno = new ArrayList();
+        Alumno tmpalum;
         try {
-        String sql="SELECT * FROM materia  WHERE estado=true and  id_materia IN ( SELECT id_materia FROM inscripcion WHERE id_alumno =4) ";    
-        } catch (Exception e) {
+            String sql = "SELECT * FROM alumno  WHERE estado=true and  id_alumno IN ( SELECT id_alumno FROM inscripcion WHERE id_materia=?)";
+            PreparedStatement ps = cx.prepareStatement(sql);
+            ps.setInt(1, mat.getId_materia());
+            ResultSet rs = ps.executeQuery();
+            System.out.println(rs.wasNull());
+            while (rs.next()) {
+                tmpalum = new Alumno();
+                tmpalum.setId_alumno(rs.getInt("id_alumno"));
+                tmpalum.setApellido(rs.getString("nombre"));
+                tmpalum.setNombre(rs.getString("nombre"));
+                tmpalum.setDni(rs.getInt("dni"));
+                tmpalum.setEstado(rs.getBoolean("estado"));
+                tmpalum.setFecha_nacimiento(rs.getDate("Fecha_nacimiento").toLocalDate());
+                listaAlumno.add(tmpalum);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error en sentencia");
         }
-        
-        
-        
-        return lista;
+        return listaAlumno;
     }
-    
-    
-    
-    
-    
 }
+

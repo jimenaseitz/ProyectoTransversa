@@ -48,7 +48,7 @@ public class AlumnoData {
             System.out.println(a);
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "VERIFIQUE DATOS -posible alumno existente ");
+            JOptionPane.showMessageDialog(null, "verifiqueDatos");
             //(java.util.logging.Logger.getLogger(UniversidadG7.class.getName()).log(Level.SEVERE, null, ex);
 
         }
@@ -71,11 +71,11 @@ public class AlumnoData {
                 al.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 al.setEstado(rs.getBoolean("estado"));
             } else {
-                JOptionPane.showMessageDialog(null, "NO SE ENCONTRARON REGISTRO CON EL ID INDICADO");
+                JOptionPane.showMessageDialog(null, "Registro no encontrado");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Verifique Sentencia -AlumnoData-buscarAlumno");
+            JOptionPane.showMessageDialog(null, "Verifique Sentencia -buscarAlumno");
 //Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return al;
@@ -102,7 +102,7 @@ public class AlumnoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ACTUALIZAR EL ALUMNO - VERIFIQUE");
+            JOptionPane.showMessageDialog(null, " VERIFIQUE-ActualizarAlumno");
 
         }
 
@@ -119,7 +119,7 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "EL ALUMNO FUE BORRADO");
 
             } else {
-                JOptionPane.showMessageDialog(null, "verifique");
+                JOptionPane.showMessageDialog(null, "No fue posible actualizar");
             }
 ps.close();
         } catch (SQLException ex) {
