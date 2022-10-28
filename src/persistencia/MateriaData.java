@@ -49,7 +49,16 @@ public class MateriaData {
                 }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO GUARDAR LA MATERIA - VERIFIQUE");
+            if (ex.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "La materia ya se encuentra ingresada - verifique");
+            } else if (ex.getErrorCode() == 1452) {
+                    JOptionPane.showMessageDialog(null, "La inscripcion o Alumno son inexistentes - verifique");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
+                }
+
+            System.out.println(ex.getErrorCode());
         }
 
     }
@@ -69,7 +78,16 @@ public class MateriaData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ACTUALIZAR LA MATERIA - VERIFIQUE");
+            if (ex.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(null, "La materia ya se encuentra ingresada - verifique");
+            } else if (ex.getErrorCode() == 1452) {
+                    JOptionPane.showMessageDialog(null, "La inscripcion o Alumno son inexistentes - verifique");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error en sentencia ");
+                }
+
+            System.out.println(ex.getErrorCode());
         }
     }
 
@@ -130,7 +148,7 @@ public class MateriaData {
 
             }
             ps.close();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Lista O consulta incorrecta, verifique");
         }
         return aux;
