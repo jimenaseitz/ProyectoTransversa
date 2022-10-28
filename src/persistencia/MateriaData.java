@@ -62,9 +62,9 @@ public class MateriaData {
     }
 
     public void actualizarMateria(Materia m) {
-        String query = "UPDATE materia set nombre=?, anio=?, estado=? where id_materia=?"; //1
+        String query = "UPDATE materia set nombre=?, anio=?, estado=? where id_materia=?"; 
         try {
-            PreparedStatement ps = cx.prepareStatement(query);//2
+            PreparedStatement ps = cx.prepareStatement(query);
             ps.setString(1, m.getNombre());
             ps.setInt(2, m.getAnio());
             ps.setBoolean(3, m.getEstado());
@@ -84,12 +84,12 @@ public class MateriaData {
 
     public Materia buscarMateria(int id) {
         Materia ma = new Materia();
-        String sql = "SELECT * FROM materia WHERE id_materia=? and estado=1"; //1
+        String sql = "SELECT * FROM materia WHERE id_materia=? and estado=1"; 
         PreparedStatement ps;
         try {
-            ps = cx.prepareStatement(sql); //2
+            ps = cx.prepareStatement(sql); 
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();//paso 3
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 ma.setId_materia(id);
                 ma.setNombre(rs.getString("nombre"));
@@ -104,7 +104,7 @@ public class MateriaData {
         return ma;
     }
 
-    public void borrarMateria(int id) {//borrado logico
+    public void borrarMateria(int id) {
         String sql = "UPDATE materia SET estado=false where id_materia=?";
         PreparedStatement ps;
         try {
