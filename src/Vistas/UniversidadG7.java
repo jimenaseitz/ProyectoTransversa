@@ -106,10 +106,10 @@ dat.actualizarAlumno(nuevo);
         System.out.println(id.obtenerMateriasInscriptas(aparains));
         System.out.println("-Muestras materias no inscriptas-");
         System.out.println(id.obtenerMateriasNoInscriptas(aparains));
-        system.out.println(id.obtenerAlumnosInscriptos(m1));
+        System.out.println(id.obtenerAlumnosInscriptos(m1));
         
         
-        /*
+        
         // dat.actualizarAlumno(nuevo);
         // AGREGAR MATERIA
         Materia ma = new Materia();
@@ -119,6 +119,6 @@ dat.actualizarAlumno(nuevo);
 
         MateriaData m = new MateriaData();
         m.guardarMateria(ma);
-*/
+
     }
 }
