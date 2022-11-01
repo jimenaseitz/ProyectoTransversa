@@ -138,7 +138,7 @@ public class AlumnoData {
 
     }
 
-    public ArrayList buscaAlumnos() {
+    public ArrayList<Alumno> buscaAlumnos() {
         ArrayList<Alumno> listatmp = new ArrayList();
         Alumno al;
         String sql = "Select * from alumno where estado=1";

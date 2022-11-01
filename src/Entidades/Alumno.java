@@ -92,6 +92,8 @@ public class Alumno {
         this.estado = estado;
     }
 
+
+
     
     
 
