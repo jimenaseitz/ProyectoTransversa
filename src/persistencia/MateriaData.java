@@ -131,7 +131,7 @@ public class MateriaData {
         }
     }
 
-    public ArrayList buscaMaterias() {
+    public ArrayList<Materia> buscaMaterias() {
         ArrayList<Materia> aux = new ArrayList();
         Materia ma;
         String sql = "Select * from materia where estado=1";
