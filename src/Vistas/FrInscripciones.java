@@ -15,22 +15,23 @@ import persistencia.AlumnoData;
  */
 public class FrInscripciones extends javax.swing.JInternalFrame {
 
-  private ArrayList <Alumno> al=new ArrayList();
-  private AlumnoData ald;
+    private ArrayList<Alumno> al = new ArrayList();
+    private AlumnoData ald;
+    private Alumno a;
+
     public FrInscripciones() {
-       //this.listaal=
-       
-       al= ald.buscaAlumnos();
+        this.al = ald.buscaAlumnos();
+
         
-        initComponents();
-        
+        this.listalum.addItem("PP");
         for (Alumno aux : al) {
+         this.listalum.addItem("PP");
             this.listalum.addItem(aux.getApellido()+" , "+aux.getNombre());
         }
-
-    }
+       this.listalum.addItem("Opcion1");
         
-    
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,7 +128,7 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -136,19 +137,18 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listalum, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-      // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        
+
 // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
