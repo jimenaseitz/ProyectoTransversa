@@ -21,7 +21,7 @@ public class UniversidadG7 {
 
     public static void main(String[] args) {
 
-        /*
+        
         
         AlumnoData dat = new AlumnoData();
         //Conexion con = new Conexion();
@@ -104,12 +104,7 @@ public class UniversidadG7 {
         System.out.println(id.obtenerMateriasNoInscriptas(nuevo));
         System.out.println("Alumnos Inscriptos a materia:  " + m1);
         System.out.println(id.obtenerAlumnosInscriptos(m1));
-*/
-AlumnoData ppp= new AlumnoData();
-        System.out.println("-------------------");
-System.out.println(ppp.buscaAlumnos());
-        System.out.println("-----------------");
-        
+
         FrPrincipal princ= new FrPrincipal();
 princ.setVisible(true);
         
