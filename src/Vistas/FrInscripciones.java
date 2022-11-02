@@ -17,20 +17,20 @@ import persistencia.AlumnoData;
  * @author sistema
  */
 public class FrInscripciones extends javax.swing.JInternalFrame {
-    
+
     private ArrayList<Alumno> listado;
     private AlumnoData ald = new AlumnoData();
-    
+
     public FrInscripciones() {
         initComponents();
         listado = ald.buscaAlumnos();
         for (Object al : listado) {
             this.ccomboalum.addItem((Alumno) al);
-            
+
         }
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -178,14 +178,39 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
+
+        this.ccomboalum.getItemCount();
+        InscripcionData insd = new InscripcionData();
+        ArrayList<Materia> templm = new ArrayList();
+        templm = insd.obtenerMateriasInscriptas((Alumno) this.ccomboalum.getSelectedItem());
+        String datos[] = new String[4];
+        DefaultTableModel modelo = (DefaultTableModel) this.girlddatos.getModel();
+        modelo.setNumRows(0);
+        for (Materia materia : templm) {
+            datos[0] = materia.getAnio() + "";
+            datos[1] = materia.getNombre();
+            datos[2] = materia.getAnio() + "";
+            modelo.addRow(datos);
+
+        }
+
+
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-
-// TODO add your handling code here:
+        InscripcionData insd = new InscripcionData();
+        ArrayList<Materia> templm = new ArrayList();
+        templm = insd.obtenerMateriasNoInscriptas((Alumno) this.ccomboalum.getSelectedItem());
+        String datos[] = new String[4];
+        DefaultTableModel modelo = (DefaultTableModel) this.girlddatos.getModel();
+        modelo.setNumRows(0);
+        for (Materia materia : templm) {
+            datos[0] = materia.getAnio() + "";
+            datos[1] = materia.getNombre();
+            datos[2] = materia.getAnio() + "";
+            modelo.addRow(datos);
     }//GEN-LAST:event_jRadioButton2ActionPerformed
-
+    }
     private void ccomboalumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccomboalumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ccomboalumActionPerformed
@@ -194,35 +219,27 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         this.ccomboalum.getItemCount();
         InscripcionData insd = new InscripcionData();
         ArrayList<Materia> templm = new ArrayList();
-        templm=insd.obtenerMateriasInscriptas((Alumno) this.ccomboalum.getSelectedItem());
+        templm = insd.obtenerMateriasInscriptas((Alumno) this.ccomboalum.getSelectedItem());
         String datos[] = new String[4];
         DefaultTableModel modelo = (DefaultTableModel) this.girlddatos.getModel();
         modelo.setNumRows(0);
         for (Materia materia : templm) {
-            datos[0]=  materia.getAnio()+"";
-            datos[1]    = materia.getNombre();
-            datos[2]=materia.getAnio()+"";
-          modelo.addRow(datos);  
-        
+            datos[0] = materia.getAnio() + "";
+            datos[1] = materia.getNombre();
+            datos[2] = materia.getAnio() + "";
+            modelo.addRow(datos);
+
         }
-        
-        
+
         //int cantidadAlumnos = templm.size();
-        
-        
-        
-        
-        
         for (int i = 0; i < 3; i++) {
             datos[0] = "1";
             datos[1] = "1";
             datos[2] = "1";
-          
+
 //            modelo.addRow(datos);
         }
-        
-        
-        
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

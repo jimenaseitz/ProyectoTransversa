@@ -31,7 +31,8 @@ public class FrPrincipal extends javax.swing.JFrame {
 
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        MenuAlumno = new javax.swing.JMenu();
+        abmAlumno = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mInscripciones = new javax.swing.JMenu();
         abminscripciones = new javax.swing.JMenuItem();
@@ -49,8 +50,22 @@ public class FrPrincipal extends javax.swing.JFrame {
             .addGap(0, 458, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        MenuAlumno.setText("Alumno");
+        MenuAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuAlumnoActionPerformed(evt);
+            }
+        });
+
+        abmAlumno.setText("A/B/M Alumno");
+        abmAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abmAlumnoActionPerformed(evt);
+            }
+        });
+        MenuAlumno.add(abmAlumno);
+
+        jMenuBar1.add(MenuAlumno);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -98,18 +113,37 @@ public class FrPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mInscripcionesActionPerformed
 
     private void abminscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abminscripcionesActionPerformed
- FrInscripciones ins= new FrInscripciones();
+        FrInscripciones ins = new FrInscripciones();
         escritorio.add(ins);
-     //codigo para centrar ventana
+        //codigo para centrar ventana
         Dimension tamescritorio = escritorio.getSize();
         Dimension tamframe = ins.getSize();
-        ins.setLocation((tamescritorio.width - tamframe.width)/2, (tamescritorio.height- tamframe.height)/2);
+        ins.setLocation((tamescritorio.width - tamframe.width) / 2, (tamescritorio.height - tamframe.height) / 2);
         //.------------------
 
         ins.setVisible(true);
         escritorio.moveToFront(ins);        // TODO add your handling code here:
         ins.show();
     }//GEN-LAST:event_abminscripcionesActionPerformed
+
+    private void MenuAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAlumnoActionPerformed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuAlumnoActionPerformed
+
+    private void abmAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abmAlumnoActionPerformed
+        FrAlumno fal = new FrAlumno();
+        escritorio.add(fal);
+        //codigo para centrar ventana
+        Dimension tamescritorio = escritorio.getSize();
+        Dimension tamframe = fal.getSize();
+        fal.setLocation((tamescritorio.width - tamframe.width) / 2, (tamescritorio.height - tamframe.height) / 2);
+        //.------------------
+
+        fal.setVisible(true);
+        escritorio.moveToFront(fal);        // TODO add your handling code here:
+        fal.show();
+    }//GEN-LAST:event_abmAlumnoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,9 +181,10 @@ public class FrPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MenuAlumno;
+    private javax.swing.JMenuItem abmAlumno;
     private javax.swing.JMenuItem abminscripciones;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mInscripciones;
