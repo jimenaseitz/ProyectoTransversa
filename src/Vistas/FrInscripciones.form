@@ -226,6 +226,7 @@
     <Component class="javax.swing.JButton" name="BInscribir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Inscribir a Materia"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BInscribirActionPerformed"/>
@@ -234,6 +235,7 @@
     <Component class="javax.swing.JButton" name="bborrarInscripcion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Anular Inscripci&#xf3;n"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bborrarInscripcionActionPerformed"/>

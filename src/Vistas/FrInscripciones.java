@@ -139,6 +139,7 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         });
 
         BInscribir.setText("Inscribir a Materia");
+        BInscribir.setEnabled(false);
         BInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BInscribirActionPerformed(evt);
@@ -146,6 +147,7 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         });
 
         bborrarInscripcion.setText("Anular Inscripción");
+        bborrarInscripcion.setEnabled(false);
         bborrarInscripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bborrarInscripcionActionPerformed(evt);
@@ -263,11 +265,15 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         InscripcionData insd = new InscripcionData();
         ArrayList<Materia> templm = new ArrayList();
         if (this.opInscriptas.isSelected()) {
-
+            this.BInscribir.setEnabled(false);
+            this.bborrarInscripcion.setEnabled(true);
             templm = insd.obtenerMateriasInscriptas((Alumno) this.ccomboalum.getSelectedItem());
 
         } else {
             if (this.opNoInscriptas.isSelected()) {
+            this.BInscribir.setEnabled(true);
+            this.bborrarInscripcion.setEnabled(false);
+           
                 templm = insd.obtenerMateriasNoInscriptas((Alumno) this.ccomboalum.getSelectedItem());
             }
 
