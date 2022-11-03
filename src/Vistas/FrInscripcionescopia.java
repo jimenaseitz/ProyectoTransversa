@@ -18,12 +18,12 @@ import persistencia.AlumnoData;
  *
  * @author sistema
  */
-public class FrInscripciones extends javax.swing.JInternalFrame {
+public class FrInscripcionescopia extends javax.swing.JInternalFrame {
 
     private ArrayList<Alumno> listado;
     private AlumnoData ald = new AlumnoData();
 
-    public FrInscripciones() {
+    public FrInscripcionescopia() {
         initComponents();
         listado = ald.buscaAlumnos();
         for (Object al : listado) {
@@ -50,6 +50,8 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         bSalir = new javax.swing.JButton();
         BInscribir = new javax.swing.JButton();
         bborrarInscripcion = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         ccomboalum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +141,6 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         });
 
         BInscribir.setText("Inscribir a Materia");
-        BInscribir.setEnabled(false);
         BInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BInscribirActionPerformed(evt);
@@ -147,12 +148,24 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         });
 
         bborrarInscripcion.setText("Anular Inscripción");
-        bborrarInscripcion.setEnabled(false);
         bborrarInscripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bborrarInscripcionActionPerformed(evt);
             }
         });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,22 +180,32 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
                         .addComponent(BInscribir)
                         .addGap(65, 65, 65)
                         .addComponent(bSalir))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(227, 227, 227)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(181, 181, 181)
-                            .addComponent(jLabel2))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(67, 67, 67)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(ccomboalum, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(136, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(67, 67, 67)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(114, 114, 114)
+                                                .addComponent(jLabel2))
+                                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(591, 591, 591))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(466, 466, 466)))
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(ccomboalum, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(377, 377, 377)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,13 +214,18 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ccomboalum, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(ccomboalum, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bSalir)
                     .addComponent(BInscribir)
@@ -215,6 +243,7 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
 
     private void opNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opNoInscriptasActionPerformed
         armarGrillaMaterias();
+        
 
 
     }//GEN-LAST:event_opNoInscriptasActionPerformed
@@ -239,7 +268,6 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         InscripcionData insd = new InscripcionData();
         MateriaData mdata = new MateriaData();
         Materia mtemp = new Materia();
-       
         mtemp = mdata.buscarMateria(codigo);
         Alumno a = new Alumno();
         a = (Alumno) this.ccomboalum.getSelectedItem();
@@ -266,15 +294,11 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         InscripcionData insd = new InscripcionData();
         ArrayList<Materia> templm = new ArrayList();
         if (this.opInscriptas.isSelected()) {
-            this.BInscribir.setEnabled(false);
-            this.bborrarInscripcion.setEnabled(true);
+            
             templm = insd.obtenerMateriasInscriptas((Alumno) this.ccomboalum.getSelectedItem());
 
         } else {
             if (this.opNoInscriptas.isSelected()) {
-            this.BInscribir.setEnabled(true);
-            this.bborrarInscripcion.setEnabled(false);
-           
                 templm = insd.obtenerMateriasNoInscriptas((Alumno) this.ccomboalum.getSelectedItem());
             }
 
@@ -303,6 +327,8 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton opInscriptas;
     private javax.swing.JRadioButton opNoInscriptas;
     // End of variables declaration//GEN-END:variables
