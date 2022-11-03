@@ -89,7 +89,7 @@ public class UniversidadG7 {
         Inscripcion i1 = new Inscripcion(m1, nuevo, m1.getAnio(), 0);
         id.guardarInscripcion(i1);
         m2.setId_materia(87);
-        i1 = new Inscripcion(m2, nuevo, m1.getAnio(), 0);
+        i1 = new Inscripcion(m2, nuevo, m2.getAnio(), 0);
 
         id.guardarInscripcion(i1);
         System.out.println("Optiene inscripcion de una materia");

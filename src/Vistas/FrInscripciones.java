@@ -6,6 +6,7 @@
 package Vistas;
 
 import Entidades.Alumno;
+import Entidades.Inscripcion;
 import Entidades.Materia;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -46,6 +47,9 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         girlddatos = new javax.swing.JTable();
+        bSalir = new javax.swing.JButton();
+        BInscribir = new javax.swing.JButton();
+        bborrarInscripcion = new javax.swing.JButton();
 
         ccomboalum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,27 +131,56 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(girlddatos);
 
+        bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
+
+        BInscribir.setText("Inscribir a Materia");
+        BInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BInscribirActionPerformed(evt);
+            }
+        });
+
+        bborrarInscripcion.setText("Anular Inscripción");
+        bborrarInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bborrarInscripcionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ccomboalum, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(132, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bborrarInscripcion)
+                        .addGap(42, 42, 42)
+                        .addComponent(BInscribir)
+                        .addGap(65, 65, 65)
+                        .addComponent(bSalir))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(227, 227, 227)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(181, 181, 181)
+                            .addComponent(jLabel2))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(67, 67, 67)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(ccomboalum, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,59 +195,99 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bSalir)
+                    .addComponent(BInscribir)
+                    .addComponent(bborrarInscripcion))
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void opInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opInscriptasActionPerformed
-
-        
-        InscripcionData insd = new InscripcionData();
-        ArrayList<Materia> templm = new ArrayList();
-        templm = insd.obtenerMateriasInscriptas((Alumno) this.ccomboalum.getSelectedItem());
-        String datos[] = new String[4];
-        DefaultTableModel modelo = (DefaultTableModel) this.girlddatos.getModel();
-        modelo.setNumRows(0);
-        for (Materia materia : templm) {
-            datos[0] = materia.getAnio() + "";
-            datos[1] = materia.getNombre();
-            datos[2] = materia.getAnio() + "";
-            modelo.addRow(datos);
-
-        }
-
+        armarGrillaMaterias();
 
     }//GEN-LAST:event_opInscriptasActionPerformed
 
     private void opNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opNoInscriptasActionPerformed
+        armarGrillaMaterias();
+
+
+    }//GEN-LAST:event_opNoInscriptasActionPerformed
+
+
+    private void ccomboalumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccomboalumActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) this.girlddatos.getModel();
+        modelo.setNumRows(0);
+        armarGrillaMaterias();
+
+
+    }//GEN-LAST:event_ccomboalumActionPerformed
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_bSalirActionPerformed
+
+    private void BInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BInscribirActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) this.girlddatos.getModel();
+        int codigo = Integer.parseInt(String.valueOf(modelo.getValueAt(this.girlddatos.getSelectedRow(), 0)));
+        Inscripcion i = new Inscripcion();
+        InscripcionData insd = new InscripcionData();
+        MateriaData mdata = new MateriaData();
+        Materia mtemp = new Materia();
+        mtemp = mdata.buscarMateria(codigo);
+        Alumno a = new Alumno();
+        a = (Alumno) this.ccomboalum.getSelectedItem();
+        i = new Inscripcion(mtemp, a, mtemp.getAnio(), 0);
+        insd.guardarInscripcion(i);
+        armarGrillaMaterias();
+    }//GEN-LAST:event_BInscribirActionPerformed
+
+    private void bborrarInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bborrarInscripcionActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) this.girlddatos.getModel();
+        int codigo = Integer.parseInt(String.valueOf(modelo.getValueAt(this.girlddatos.getSelectedRow(), 0)));
+        InscripcionData insd = new InscripcionData();
+        Alumno a = new Alumno();
+        a = (Alumno) this.ccomboalum.getSelectedItem();
+        MateriaData mdata = new MateriaData();
+        Materia mtemp = new Materia();
+        mtemp = mdata.buscarMateria(codigo);
+        insd.borrarInscripcion(a.getId_alumno(), mtemp.getId_materia());
+        armarGrillaMaterias();
+
+    }//GEN-LAST:event_bborrarInscripcionActionPerformed
+
+    private void armarGrillaMaterias() {
         InscripcionData insd = new InscripcionData();
         ArrayList<Materia> templm = new ArrayList();
-        templm = insd.obtenerMateriasNoInscriptas((Alumno) this.ccomboalum.getSelectedItem());
+        if (this.opInscriptas.isSelected()) {
+
+            templm = insd.obtenerMateriasInscriptas((Alumno) this.ccomboalum.getSelectedItem());
+
+        } else {
+            if (this.opNoInscriptas.isSelected()) {
+                templm = insd.obtenerMateriasNoInscriptas((Alumno) this.ccomboalum.getSelectedItem());
+            }
+
+        }
         String datos[] = new String[4];
         DefaultTableModel modelo = (DefaultTableModel) this.girlddatos.getModel();
         modelo.setNumRows(0);
         for (Materia materia : templm) {
-            datos[0] = materia.getAnio() + "";
+            datos[0] = materia.getId_materia() + "";
             datos[1] = materia.getNombre();
             datos[2] = materia.getAnio() + "";
             modelo.addRow(datos);
-    }//GEN-LAST:event_opNoInscriptasActionPerformed
-    }
-    private void ccomboalumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccomboalumActionPerformed
-     this.opInscriptas.setSelected(false);
-     this.opNoInscriptas.setSelected(false);
-     DefaultTableModel modelo = (DefaultTableModel) this.girlddatos.getModel();
-        modelo.setNumRows(0);
-     
-     
-     
-        
-    }//GEN-LAST:event_ccomboalumActionPerformed
+        }
 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BInscribir;
+    private javax.swing.JButton bSalir;
+    private javax.swing.JButton bborrarInscripcion;
     private javax.swing.JComboBox<Alumno> ccomboalum;
     private javax.swing.ButtonGroup gListadoMaterias;
     private javax.swing.JTable girlddatos;
