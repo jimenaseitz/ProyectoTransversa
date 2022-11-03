@@ -170,7 +170,7 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
 
     private void opInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opInscriptasActionPerformed
 
-        this.ccomboalum.getItemCount();
+        
         InscripcionData insd = new InscripcionData();
         ArrayList<Materia> templm = new ArrayList();
         templm = insd.obtenerMateriasInscriptas((Alumno) this.ccomboalum.getSelectedItem());
@@ -203,8 +203,12 @@ public class FrInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_opNoInscriptasActionPerformed
     }
     private void ccomboalumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccomboalumActionPerformed
-     this.opInscriptas.isSelected()=false;
-     this.opNoInscriptas.isSelected()=false;
+     this.opInscriptas.setSelected(false);
+     this.opNoInscriptas.setSelected(false);
+     DefaultTableModel modelo = (DefaultTableModel) this.girlddatos.getModel();
+        modelo.setNumRows(0);
+     
+     
      
         
     }//GEN-LAST:event_ccomboalumActionPerformed
