@@ -34,16 +34,23 @@ public class FrPrincipal extends javax.swing.JFrame {
         MenuAlumno = new javax.swing.JMenu();
         abmAlumno = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mnotas = new javax.swing.JMenu();
+        mmodificaNotas = new javax.swing.JMenuItem();
         mInscripciones = new javax.swing.JMenu();
         abminscripciones = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        mmsalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SISTEMA GENERAL ADMINISTRATIVO");
+
+        escritorio.setBackground(new java.awt.Color(55, 97, 140));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 881, Short.MAX_VALUE)
+            .addGap(0, 892, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,6 +77,24 @@ public class FrPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
+        mnotas.setText("Notas");
+        mnotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnotasActionPerformed(evt);
+            }
+        });
+
+        mmodificaNotas.setText("Modificar Notas por Alumno");
+        mmodificaNotas.setName(""); // NOI18N
+        mmodificaNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmodificaNotasActionPerformed(evt);
+            }
+        });
+        mnotas.add(mmodificaNotas);
+
+        jMenuBar1.add(mnotas);
+
         mInscripciones.setText("Inscripciones");
         mInscripciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +112,18 @@ public class FrPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(mInscripciones);
 
+        jMenu1.setText("Salir");
+
+        mmsalir.setText("Confirma que desea salir?");
+        mmsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmsalirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mmsalir);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -99,16 +136,16 @@ public class FrPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void mInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mInscripcionesActionPerformed
-
+        
 
     }//GEN-LAST:event_mInscripcionesActionPerformed
 
@@ -127,7 +164,7 @@ public class FrPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_abminscripcionesActionPerformed
 
     private void MenuAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAlumnoActionPerformed
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuAlumnoActionPerformed
 
@@ -144,6 +181,28 @@ public class FrPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(fal);        // TODO add your handling code here:
         fal.show();
     }//GEN-LAST:event_abmAlumnoActionPerformed
+
+    private void mnotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnotasActionPerformed
+
+    }//GEN-LAST:event_mnotasActionPerformed
+
+    private void mmodificaNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmodificaNotasActionPerformed
+        FrNotas fNotas = new FrNotas();
+        escritorio.add(fNotas);
+        //codigo para centrar ventana
+        Dimension tamescritorio = escritorio.getSize();
+        Dimension tamframe = fNotas.getSize();
+        fNotas.setLocation((tamescritorio.width - tamframe.width) / 2, (tamescritorio.height - tamframe.height) / 2);
+        //.------------------
+
+        fNotas.setVisible(true);
+        escritorio.moveToFront(fNotas);        // TODO add your handling code here:
+        fNotas.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_mmodificaNotasActionPerformed
+
+    private void mmsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmsalirActionPerformed
+this.setVisible(false);
+    }//GEN-LAST:event_mmsalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,8 +244,12 @@ public class FrPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem abmAlumno;
     private javax.swing.JMenuItem abminscripciones;
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mInscripciones;
+    private javax.swing.JMenuItem mmodificaNotas;
+    private javax.swing.JMenuItem mmsalir;
+    private javax.swing.JMenu mnotas;
     // End of variables declaration//GEN-END:variables
 }
