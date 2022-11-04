@@ -33,7 +33,8 @@ public class FrPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuAlumno = new javax.swing.JMenu();
         abmAlumno = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        mlistadoalumnos = new javax.swing.JMenuItem();
+        mMateria = new javax.swing.JMenu();
         mnotas = new javax.swing.JMenu();
         mmodificaNotas = new javax.swing.JMenuItem();
         mInscripciones = new javax.swing.JMenu();
@@ -72,10 +73,18 @@ public class FrPrincipal extends javax.swing.JFrame {
         });
         MenuAlumno.add(abmAlumno);
 
+        mlistadoalumnos.setText("Listado Alumnos Activos");
+        mlistadoalumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mlistadoalumnosActionPerformed(evt);
+            }
+        });
+        MenuAlumno.add(mlistadoalumnos);
+
         jMenuBar1.add(MenuAlumno);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        mMateria.setText("Materia");
+        jMenuBar1.add(mMateria);
 
         mnotas.setText("Notas");
         mnotas.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +152,7 @@ public class FrPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mInscripcionesActionPerformed
-        
+
 
     }//GEN-LAST:event_mInscripcionesActionPerformed
 
@@ -199,8 +208,24 @@ public class FrPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mmodificaNotasActionPerformed
 
     private void mmsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmsalirActionPerformed
-this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_mmsalirActionPerformed
+
+    private void mlistadoalumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mlistadoalumnosActionPerformed
+        FrListadoAlumnosAct flista = new FrListadoAlumnosAct();
+        escritorio.add(flista);
+        //codigo para centrar ventana
+        Dimension tamescritorio = escritorio.getSize();
+        Dimension tamframe = flista.getSize();
+        flista.setLocation((tamescritorio.width - tamframe.width) / 2, (tamescritorio.height - tamframe.height) / 2);
+        //.------------------
+
+        flista.setVisible(true);
+        escritorio.moveToFront(flista);        // TODO add your handling code here:
+        flista.show();        // TODO add your handling code here:
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mlistadoalumnosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,9 +268,10 @@ this.setVisible(false);
     private javax.swing.JMenuItem abminscripciones;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mInscripciones;
+    private javax.swing.JMenu mMateria;
+    private javax.swing.JMenuItem mlistadoalumnos;
     private javax.swing.JMenuItem mmodificaNotas;
     private javax.swing.JMenuItem mmsalir;
     private javax.swing.JMenu mnotas;

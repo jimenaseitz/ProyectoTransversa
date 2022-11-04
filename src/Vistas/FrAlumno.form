@@ -215,7 +215,8 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="BxEstado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Estado"/>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="Activo"/>
         <Property name="horizontalAlignment" type="int" value="11"/>
         <Property name="horizontalTextPosition" type="int" value="2"/>
         <Property name="iconTextGap" type="int" value="20"/>

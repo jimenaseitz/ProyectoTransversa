@@ -5,6 +5,7 @@
  */
 package Vistas;
 //actulz
+
 import Entidades.Alumno;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -18,14 +19,16 @@ import persistencia.AlumnoData;
  * @author jimes
  */
 public class FrAlumno extends javax.swing.JInternalFrame {
-  AlumnoData al;
+
+    AlumnoData al;
+
     /**
      * Creates new form FrAlumno
      */
     public FrAlumno() {
         initComponents();
-         this.al = new AlumnoData();
-         //
+        this.al = new AlumnoData();
+        //
     }
 
     /**
@@ -82,7 +85,8 @@ public class FrAlumno extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Fecha Nac");
 
-        BxEstado.setText("Estado");
+        BxEstado.setSelected(true);
+        BxEstado.setText("Activo");
         BxEstado.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         BxEstado.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         BxEstado.setIconTextGap(20);
@@ -249,16 +253,17 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BxBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxBuscarActionPerformed
-        
-       Alumno alumno = al.buscarAlumno(Integer.parseInt(this.TxLegajo.getText()));
-       this.TxApellido.setText(alumno.getApellido());
-       this.TxNombre.setText(alumno.getNombre());
-       this.TxDNI.setText(String.valueOf(alumno.getDni()));
-       LocalDate lc = alumno.getFecha_nacimiento();
-       java.util.Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            jDateFechaNacimiento.setDate(date);
-      
-        
+
+        Alumno alumno = al.buscarAlumno(Integer.parseInt(this.TxLegajo.getText()));
+        this.TxApellido.setText(alumno.getApellido());
+        this.TxNombre.setText(alumno.getNombre());
+        this.TxDNI.setText(String.valueOf(alumno.getDni()));
+        LocalDate lc = alumno.getFecha_nacimiento();
+        java.util.Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        jDateFechaNacimiento.setDate(date);
+        this.BxEstado.setSelected(alumno.getEstado());
+
+
     }//GEN-LAST:event_BxBuscarActionPerformed
 
     private void BxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxEstadoActionPerformed
@@ -275,12 +280,12 @@ public class FrAlumno extends javax.swing.JInternalFrame {
         alu.setNombre(TxNombre.getText());
         alu.setDni(Long.parseLong(TxDNI.getText()));
         alu.setEstado(BxEstado.isSelected());
-        alu.setFecha_nacimiento(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(jDateFechaNacimiento.getDate())));
+        alu.setFecha_nacimiento(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(jDateFechaNacimiento.getDate())));
         al.guardarAlumno(alu);
-        TxLegajo.setText(alu.getId_alumno()+"");
-       // Alumno alumno = new Alumno(this.TxDNI.getText(),this.TxApellido.getText(),this.TxNombre.getText(),this.TxFechaDeNacimiento.getText(),this.BxEstado.action(true, ui)); 
- 
-       // this.al.guardarAlumno(alumno);// TODO add your handling code here:
+        TxLegajo.setText(alu.getId_alumno() + "");
+        // Alumno alumno = new Alumno(this.TxDNI.getText(),this.TxApellido.getText(),this.TxNombre.getText(),this.TxFechaDeNacimiento.getText(),this.BxEstado.action(true, ui)); 
+
+        // this.al.guardarAlumno(alumno);// TODO add your handling code here:
     }//GEN-LAST:event_BxGuardarActionPerformed
 
     private void TxApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxApellidoActionPerformed
@@ -292,13 +297,13 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TxLegajoActionPerformed
 
     private void BxBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxBorrarActionPerformed
-        
-       al.borrarAlumno(Integer.parseInt(this.TxLegajo.getText()));
-      
-      JOptionPane.showMessageDialog(this , "El alumuno fue borrado");
-       limpiarCampo();
-       
-      
+
+        al.borrarAlumno(Integer.parseInt(this.TxLegajo.getText()));
+
+        JOptionPane.showMessageDialog(this, "El alumuno fue borrado");
+        limpiarCampo();
+
+
     }//GEN-LAST:event_BxBorrarActionPerformed
 
     private void BxLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxLimpiarActionPerformed
@@ -307,27 +312,26 @@ public class FrAlumno extends javax.swing.JInternalFrame {
 
     private void BxActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxActualizarActionPerformed
         Alumno alumno = al.buscarAlumno(Integer.parseInt(this.TxLegajo.getText()));
-         
-       alumno.setApellido(this.TxApellido.getText());
-       alumno.setApellido(this.TxApellido.getText());
-       alumno.setNombre(this.TxNombre.getText());
-       alumno.setDni(Integer.parseInt(this.TxDNI.getText()));
-       alumno.setFecha_nacimiento(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(jDateFechaNacimiento.getDate())));
-       al.actualizarAlumno(alumno);
+
+        alumno.setApellido(this.TxApellido.getText());
+        alumno.setApellido(this.TxApellido.getText());
+        alumno.setNombre(this.TxNombre.getText());
+        alumno.setDni(Integer.parseInt(this.TxDNI.getText()));
+        alumno.setFecha_nacimiento(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(jDateFechaNacimiento.getDate())));
+        al.actualizarAlumno(alumno);
     }//GEN-LAST:event_BxActualizarActionPerformed
-    private void limpiarCampo(){
-        
-       this.TxApellido.setText("");
-       this.TxNombre.setText("");
-       this.TxDNI.setText("");
-       this.TxLegajo.setText("");
-       //this.jDateFechaNacimiento();
-       
+    private void limpiarCampo() {
+
+        this.TxApellido.setText("");
+        this.TxNombre.setText("");
+        this.TxDNI.setText("");
+        this.TxLegajo.setText("");
+        //this.jDateFechaNacimiento();
+        this.BxEstado.setSelected(false);
 
     }
 
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BxActualizar;
     private javax.swing.JButton BxBorrar;
