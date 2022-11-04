@@ -57,11 +57,19 @@ public class Inscripcion {
         this.anio = anio;
     }
 
+    public double getNota() {
+        return nota;
+    }
+
+    public void setNota(double nota) {
+        this.nota = nota;
+    }
+
 
 
     @Override
     public String toString() {
-        return "Inscripcion{" + "materia=" + materia + ", alumno=" + alumno + ", anio=" + anio + ", nota=" + nota + '}';
+        return "Inscripcion{" + "m: " + materia + ", a: " + alumno + ", a: " + anio + ", n: " + nota + '}';
     }
 
     

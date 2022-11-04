@@ -23,7 +23,6 @@ public class InscripcionData {
         try {
             String sql = "INSERT INTO inscripcion (id_alumno, id_materia, nota ) values(?,?,?)";
             PreparedStatement ps = cx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
             ps.setInt(1, in.getAlumno().getId_alumno());
             ps.setInt(2, in.getMateria().getId_materia());
             ps.setLong(3, 0);
@@ -90,6 +89,38 @@ public class InscripcionData {
 
         return i;
     }
+    public ArrayList<Inscripcion> obtenerInscripcionesxAlumno(Alumno a) {
+        ArrayList<Inscripcion> listains=new ArrayList();
+        Inscripcion i;
+        AlumnoData al = new AlumnoData();
+        MateriaData mat = new MateriaData();
+        try {
+            String sql = "SELECT * FROM inscripcion WHERE id_alumno=?";
+            PreparedStatement ps = cx.prepareStatement(sql);
+            ps.setInt(1, a.getId_alumno());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+              i=new Inscripcion();
+              i.setAlumno(al.buscarAlumno(rs.getInt("id_alumno")));
+              i.setMateria(mat.buscarMateria(rs.getInt("id_materia")));
+              i.setNota(rs.getDouble("nota"));
+              i.setId_inscripcion(rs.getInt("id_inscripcion"));
+              listains.add(i);
+            }
+         ps.close();
+        } catch (SQLException ex) {
+            if (ex.getErrorCode() == 1452) {
+                JOptionPane.showMessageDialog(null, "La inscripcion es inexistente - verifique");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en sentencia ");
+            }
+  
+        }
+   
+        return listains;
+        
+    }
 
     public void borrarInscripcion(int a, int m) {
         try {
@@ -133,7 +164,7 @@ public class InscripcionData {
         }
     }
 
-    public ArrayList obtenerMateriasInscriptas(Alumno al) {
+    public ArrayList<Materia> obtenerMateriasInscriptas(Alumno al) {
         ArrayList<Materia> ma = new ArrayList();
         Materia mattemp;
         MateriaData m = new MateriaData();
@@ -154,7 +185,7 @@ public class InscripcionData {
         return ma;
     }
 
-    public ArrayList obtenerMateriasNoInscriptas(Alumno al) {
+    public ArrayList <Materia> obtenerMateriasNoInscriptas(Alumno al) {
         ArrayList<Materia> ma = new ArrayList();
         Materia mattemp;
         try {
@@ -179,7 +210,7 @@ public class InscripcionData {
         return ma;
     }
 
-    public ArrayList obtenerAlumnosInscriptos(Materia mat) {
+    public ArrayList <Alumno> obtenerAlumnosInscriptos(Materia mat) {
         ArrayList<Alumno> listaAlumno = new ArrayList();
         Alumno tmpalum;
         try {
