@@ -25,7 +25,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     public FrAlumno() {
         initComponents();
          this.al = new AlumnoData();
-         this.BxEstado.setEnabled(true);
+         
     }
 
     /**
@@ -322,7 +322,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
        this.TxDNI.setText("");
        this.TxLegajo.setText("");
        //this.jDateFechaNacimiento();
-       this.BxEstado.setEnabled(false);
+       this.BxEstado.i;
 
     }
 
