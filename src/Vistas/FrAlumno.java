@@ -32,6 +32,10 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
+        jLocaleChooser1 = new com.toedter.components.JLocaleChooser();
+        jYearChooser1 = new com.toedter.calendar.JYearChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         BxBuscar = new javax.swing.JButton();
@@ -41,7 +45,6 @@ public class FrAlumno extends javax.swing.JInternalFrame {
         BxEstado = new javax.swing.JCheckBox();
         TxApellido = new javax.swing.JTextField();
         TxNombre = new javax.swing.JTextField();
-        TxFechaDeNacimiento = new javax.swing.JTextField();
         BxGuardar = new javax.swing.JButton();
         BxBorrar = new javax.swing.JButton();
         BxActualizar = new javax.swing.JButton();
@@ -49,6 +52,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
         TxLegajo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         TxDNI = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 255));
@@ -145,8 +149,8 @@ public class FrAlumno extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxFechaDeNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(BxEstado)
@@ -154,10 +158,11 @@ public class FrAlumno extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGap(0, 114, Short.MAX_VALUE)
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(TxApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(TxApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(51, 51, 51))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel6)
@@ -168,7 +173,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(TxDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                                .addGap(146, 146, 146))))))
+                                .addGap(95, 95, 95))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,13 +199,13 @@ public class FrAlumno extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(TxDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
-                    .addComponent(TxFechaDeNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addComponent(BxEstado)
-                .addGap(57, 57, 57)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BxGuardar)
                     .addComponent(BxBorrar)
@@ -232,6 +237,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TxNombreActionPerformed
 
     private void BxGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxGuardarActionPerformed
+alu.setFechaDeNacimiento(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(JDCFechaNacimiento.getDate())));
        
        // Alumno alumno = new Alumno(this.TxDNI.getText(),this.TxApellido.getText(),this.TxNombre.getText(),this.TxFechaDeNacimiento.getText(),this.BxEstado.action(true, ui)); 
  
@@ -248,14 +254,18 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JButton BxLimpiar;
     private javax.swing.JTextField TxApellido;
     private javax.swing.JTextField TxDNI;
-    private javax.swing.JTextField TxFechaDeNacimiento;
     private javax.swing.JTextField TxLegajo;
     private javax.swing.JTextField TxNombre;
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private com.toedter.components.JLocaleChooser jLocaleChooser1;
+    private com.toedter.calendar.JMonthChooser jMonthChooser1;
+    private com.toedter.calendar.JYearChooser jYearChooser1;
     // End of variables declaration//GEN-END:variables
 }
