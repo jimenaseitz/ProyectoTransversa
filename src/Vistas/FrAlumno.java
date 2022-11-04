@@ -25,7 +25,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     public FrAlumno() {
         initComponents();
          this.al = new AlumnoData();
-         this.BxEstado.setEnabled(true);
+        
     }
 
     /**
@@ -82,7 +82,8 @@ public class FrAlumno extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Fecha Nac");
 
-        BxEstado.setText("Estado");
+        BxEstado.setSelected(true);
+        BxEstado.setText("Activo");
         BxEstado.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         BxEstado.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         BxEstado.setIconTextGap(20);
@@ -322,7 +323,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
        this.TxDNI.setText("");
        this.TxLegajo.setText("");
        //this.jDateFechaNacimiento();
-       this.BxEstado.setEnabled(false);
+       this.BxEstado.isSelected();
 
     }
 
