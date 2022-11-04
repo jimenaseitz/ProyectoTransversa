@@ -6,7 +6,11 @@
 package Vistas;
 
 import Entidades.Alumno;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import persistencia.AlumnoData;
 
 /**
@@ -21,6 +25,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     public FrAlumno() {
         initComponents();
          this.al = new AlumnoData();
+         this.BxEstado.setEnabled(true);
     }
 
     /**
@@ -52,7 +57,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
         TxLegajo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         TxDNI = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateFechaNacimiento = new com.toedter.calendar.JDateChooser();
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 255));
@@ -88,6 +93,11 @@ public class FrAlumno extends javax.swing.JInternalFrame {
         });
 
         TxApellido.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        TxApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxApellidoActionPerformed(evt);
+            }
+        });
 
         TxNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,10 +113,31 @@ public class FrAlumno extends javax.swing.JInternalFrame {
         });
 
         BxBorrar.setText("Borrar");
+        BxBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BxBorrarActionPerformed(evt);
+            }
+        });
 
         BxActualizar.setText("Actualizar");
+        BxActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BxActualizarActionPerformed(evt);
+            }
+        });
 
         BxLimpiar.setText("Limpiar");
+        BxLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BxLimpiarActionPerformed(evt);
+            }
+        });
+
+        TxLegajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxLegajoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("DNI");
 
@@ -150,7 +181,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jDateFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(BxEstado)
@@ -202,7 +233,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addComponent(BxEstado)
                 .addGap(61, 61, 61)
@@ -222,9 +253,11 @@ public class FrAlumno extends javax.swing.JInternalFrame {
        Alumno alumno = al.buscarAlumno(Integer.parseInt(this.TxLegajo.getText()));
        this.TxApellido.setText(alumno.getApellido());
        this.TxNombre.setText(alumno.getNombre());
-       this.TxFechaDeNacimiento.setText(alumno.getFecha_nacimiento().toString());
        this.TxDNI.setText(String.valueOf(alumno.getDni()));
-              
+       LocalDate lc = alumno.getFecha_nacimiento();
+       java.util.Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            jDateFechaNacimiento.setDate(date);
+      
         
     }//GEN-LAST:event_BxBuscarActionPerformed
 
@@ -237,14 +270,64 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TxNombreActionPerformed
 
     private void BxGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxGuardarActionPerformed
-alu.setFechaDeNacimiento(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(JDCFechaNacimiento.getDate())));
-       
+        Alumno alu = new Alumno();
+        alu.setApellido(TxApellido.getText());
+        alu.setNombre(TxNombre.getText());
+        alu.setDni(Long.parseLong(TxDNI.getText()));
+        alu.setEstado(BxEstado.isSelected());
+        alu.setFecha_nacimiento(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(jDateFechaNacimiento.getDate())));
+        al.guardarAlumno(alu);
+        TxLegajo.setText(alu.getId_alumno()+"");
        // Alumno alumno = new Alumno(this.TxDNI.getText(),this.TxApellido.getText(),this.TxNombre.getText(),this.TxFechaDeNacimiento.getText(),this.BxEstado.action(true, ui)); 
  
        // this.al.guardarAlumno(alumno);// TODO add your handling code here:
     }//GEN-LAST:event_BxGuardarActionPerformed
 
+    private void TxApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxApellidoActionPerformed
 
+    private void TxLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxLegajoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxLegajoActionPerformed
+
+    private void BxBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxBorrarActionPerformed
+        
+       al.borrarAlumno(Integer.parseInt(this.TxLegajo.getText()));
+      
+      JOptionPane.showMessageDialog(this , "El alumuno fue borrado");
+       limpiarCampo();
+       
+      
+    }//GEN-LAST:event_BxBorrarActionPerformed
+
+    private void BxLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxLimpiarActionPerformed
+        limpiarCampo();
+    }//GEN-LAST:event_BxLimpiarActionPerformed
+
+    private void BxActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxActualizarActionPerformed
+        Alumno alumno = al.buscarAlumno(Integer.parseInt(this.TxLegajo.getText()));
+         
+       alumno.setApellido(this.TxApellido.getText());
+       alumno.setApellido(this.TxApellido.getText());
+       alumno.setNombre(this.TxNombre.getText());
+       alumno.setDni(Integer.parseInt(this.TxDNI.getText()));
+       alumno.setFecha_nacimiento(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(jDateFechaNacimiento.getDate())));
+       al.actualizarAlumno(alumno);
+    }//GEN-LAST:event_BxActualizarActionPerformed
+    private void limpiarCampo(){
+        
+       this.TxApellido.setText("");
+       this.TxNombre.setText("");
+       this.TxDNI.setText("");
+       this.TxLegajo.setText("");
+       //this.jDateFechaNacimiento();
+       this.BxEstado.setEnabled(false);
+
+    }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BxActualizar;
     private javax.swing.JButton BxBorrar;
@@ -257,7 +340,7 @@ alu.setFechaDeNacimiento(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").for
     private javax.swing.JTextField TxLegajo;
     private javax.swing.JTextField TxNombre;
     private com.toedter.calendar.JCalendar jCalendar1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateFechaNacimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
