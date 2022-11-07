@@ -88,6 +88,11 @@ public class FrPrincipal extends javax.swing.JFrame {
         mMateria.setText("Materia");
 
         mmabmMat.setText("A/B/M materia");
+        mmabmMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmabmMatActionPerformed(evt);
+            }
+        });
         mMateria.add(mmabmMat);
 
         mmMuestraAlxMat.setText("Muestra Alumnos Inscriptos por materia");
@@ -254,6 +259,19 @@ public class FrPrincipal extends javax.swing.JFrame {
         fmalum.show();        // TODO add your handling code here:
         
     }//GEN-LAST:event_mmMuestraAlxMatActionPerformed
+
+    private void mmabmMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmabmMatActionPerformed
+         FrMateria fmat = new FrMateria();
+        escritorio.add(fmat);
+        Dimension tamescritorio = escritorio.getSize();
+        Dimension tamframe = fmat.getSize();
+        fmat.setLocation((tamescritorio.width - tamframe.width) / 2, (tamescritorio.height - tamframe.height) / 2);
+        //.------------------
+
+        fmat.setVisible(true);
+        escritorio.moveToFront(fmat);        // TODO add your handling code here:
+        fmat.show();      
+    }//GEN-LAST:event_mmabmMatActionPerformed
 
     /**
      * @param args the command line arguments

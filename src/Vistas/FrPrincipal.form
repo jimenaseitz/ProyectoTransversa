@@ -39,6 +39,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="A/B/M materia"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mmabmMatActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mmMuestraAlxMat">
               <Properties>

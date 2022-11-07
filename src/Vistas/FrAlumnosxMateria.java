@@ -56,19 +56,19 @@ public class FrAlumnosxMateria extends javax.swing.JInternalFrame {
 
         girlddatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Identificacion", "Apellido", "Nombre"
+                "Identificacion", "Apellido", "Nombre", "DNi"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -152,7 +152,7 @@ public class FrAlumnosxMateria extends javax.swing.JInternalFrame {
             datos[0] = i.getId_alumno()+ "";
             datos[1] = i.getApellido();
             datos[2] = i.getNombre();
-            //datos[3] = i.getNota() + "";
+            datos[3] = i.getDni()+"";
             modelo.addRow(datos);
         }
     }

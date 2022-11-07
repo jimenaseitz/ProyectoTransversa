@@ -107,10 +107,11 @@
         <Component class="javax.swing.JTable" name="girlddatos">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="3">
+              <Table columnCount="4" rowCount="3">
                 <Column editable="false" title="Identificacion" type="java.lang.String"/>
                 <Column editable="false" title="Apellido" type="java.lang.String"/>
                 <Column editable="false" title="Nombre" type="java.lang.String"/>
+                <Column editable="false" title="DNi" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
