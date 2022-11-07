@@ -9,12 +9,12 @@ package Vistas;
  *
  * @author sistema
  */
-public class FrListadoAlumnosAct extends javax.swing.JInternalFrame {
+public class FrMateriaal extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form FrListadoAlumnosAct
      */
-    public FrListadoAlumnosAct() {
+    public FrMateriaal() {
         initComponents();
     }
 
