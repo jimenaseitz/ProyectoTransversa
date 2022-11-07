@@ -131,7 +131,6 @@ public class FrAlumnosxMateria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void ccomboMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccomboMatActionPerformed
 
         armarGrillaAlum();
