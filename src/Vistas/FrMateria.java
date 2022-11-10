@@ -14,13 +14,13 @@ import persistencia.MateriaData;
  * @author jimes
  */
 public class FrMateria extends javax.swing.JInternalFrame {
-    
+
     MateriaData matd = new MateriaData();
     Materia aux = new Materia();
-    
+
     public FrMateria() {
         initComponents();
-        
+
     }
 
     /**
@@ -44,6 +44,7 @@ public class FrMateria extends javax.swing.JInternalFrame {
         bNuevo = new javax.swing.JButton();
         BBuscar = new javax.swing.JButton();
         bLimpiar = new javax.swing.JButton();
+        BBorrar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -51,7 +52,29 @@ public class FrMateria extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Codigo");
 
+        tIdMateria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tIdMateriaFocusLost(evt);
+            }
+        });
+        tIdMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tIdMateriaActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Nombre");
+
+        tanio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tanioFocusLost(evt);
+            }
+        });
+        tanio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tanioActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Año");
 
@@ -90,6 +113,13 @@ public class FrMateria extends javax.swing.JInternalFrame {
             }
         });
 
+        BBorrar.setText("Borrar");
+        BBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BBorrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,7 +149,9 @@ public class FrMateria extends javax.swing.JInternalFrame {
                         .addComponent(bNuevo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bLimpiar)
-                        .addGap(79, 79, 79)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BBorrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bActualizare)
                         .addGap(18, 18, 18)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -149,7 +181,8 @@ public class FrMateria extends javax.swing.JInternalFrame {
                     .addComponent(bSalir)
                     .addComponent(bActualizare)
                     .addComponent(bNuevo)
-                    .addComponent(bLimpiar))
+                    .addComponent(bLimpiar)
+                    .addComponent(BBorrar))
                 .addGap(21, 21, 21))
         );
 
@@ -161,7 +194,22 @@ public class FrMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bLimpiarActionPerformed
 
     private void bActualizareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizareActionPerformed
-        // TODO add your handling code here:
+
+        if (!this.tIdMateria.getText().equals("")) {
+            if (this.tanio.getText().equals("")) {
+                this.tanio.setText("0");
+            }
+
+            aux.setId_materia(Integer.parseInt(this.tIdMateria.getText()));
+            aux.setAnio(Integer.parseInt(this.tanio.getText()));
+            aux.setEstado(true);
+            aux.setNombre(this.tNombre.getText());
+            matd.actualizarMateria(aux);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el código");
+        }
+
+
     }//GEN-LAST:event_bActualizareActionPerformed
 
     private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
@@ -175,29 +223,63 @@ public class FrMateria extends javax.swing.JInternalFrame {
     private void BBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBuscarActionPerformed
 
         if (!this.tIdMateria.getText().equals("")) {
-        aux = matd.buscarMateria(Integer.parseInt(this.tIdMateria.getText()));
-        this.tIdMateria.setText(String.valueOf(aux.getId_materia()));
-        this.tNombre.setText(aux.getNombre());
-        this.tanio.setText(String.valueOf(aux.getAnio()));
-            
+            aux = matd.buscarMateria(Integer.parseInt(this.tIdMateria.getText()));
+            this.tIdMateria.setText(String.valueOf(aux.getId_materia()));
+            this.tNombre.setText(aux.getNombre());
+            this.tanio.setText(String.valueOf(aux.getAnio()));
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el códgio");
         }
-        else {
-            JOptionPane.showMessageDialog(this,"Debe ingresar el códgio");
-        }
-        
+
 
     }//GEN-LAST:event_BBuscarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_bSalirActionPerformed
-    
+
+    private void tIdMateriaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tIdMateriaFocusLost
+
+        if (!this.tIdMateria.getText().matches("[+-]?\\d*(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero");
+            this.tIdMateria.requestFocus();
+        }
+
+
+    }//GEN-LAST:event_tIdMateriaFocusLost
+
+    private void tIdMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tIdMateriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tIdMateriaActionPerformed
+
+    private void tanioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tanioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tanioActionPerformed
+
+    private void tanioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tanioFocusLost
+
+        if (!this.tanio.getText().matches("[+-]?\\d*(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero");
+            this.tanio.requestFocus();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tanioFocusLost
+
+    private void BBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBorrarActionPerformed
+        if (!this.tanio.getText().matches("[+-]?\\d*(\\.\\d+)?")) {
+            matd.borrarMateria(Integer.parseInt(this.tIdMateria.getText()));
+
+    }//GEN-LAST:event_BBorrarActionPerformed
+
+    }
+
     private void limpiar() {
         this.tIdMateria.setText("");
         this.tNombre.setText("");
         this.tanio.setText("");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BBorrar;
     private javax.swing.JButton BBuscar;
     private javax.swing.JButton bActualizare;
     private javax.swing.JButton bLimpiar;
