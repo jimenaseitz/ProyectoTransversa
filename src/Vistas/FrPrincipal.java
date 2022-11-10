@@ -35,6 +35,8 @@ public class FrPrincipal extends javax.swing.JFrame {
         abmAlumno = new javax.swing.JMenuItem();
         mlistadoalumnos = new javax.swing.JMenuItem();
         mMateria = new javax.swing.JMenu();
+        mmabmMat = new javax.swing.JMenuItem();
+        mmMuestraAlxMat = new javax.swing.JMenuItem();
         mnotas = new javax.swing.JMenu();
         mmodificaNotas = new javax.swing.JMenuItem();
         mInscripciones = new javax.swing.JMenu();
@@ -84,6 +86,23 @@ public class FrPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(MenuAlumno);
 
         mMateria.setText("Materia");
+
+        mmabmMat.setText("A/B/M materia");
+        mmabmMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmabmMatActionPerformed(evt);
+            }
+        });
+        mMateria.add(mmabmMat);
+
+        mmMuestraAlxMat.setText("Muestra Alumnos Inscriptos por materia");
+        mmMuestraAlxMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmMuestraAlxMatActionPerformed(evt);
+            }
+        });
+        mMateria.add(mmMuestraAlxMat);
+
         jMenuBar1.add(mMateria);
 
         mnotas.setText("Notas");
@@ -212,7 +231,7 @@ public class FrPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mmsalirActionPerformed
 
     private void mlistadoalumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mlistadoalumnosActionPerformed
-        FrListadoAlumnosAct flista = new FrListadoAlumnosAct();
+        FrMateriaal flista = new FrMateriaal();
         escritorio.add(flista);
         //codigo para centrar ventana
         Dimension tamescritorio = escritorio.getSize();
@@ -226,6 +245,33 @@ public class FrPrincipal extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_mlistadoalumnosActionPerformed
+
+    private void mmMuestraAlxMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmMuestraAlxMatActionPerformed
+        FrAlumnosxMateria fmalum = new FrAlumnosxMateria();
+        escritorio.add(fmalum);
+        Dimension tamescritorio = escritorio.getSize();
+        Dimension tamframe = fmalum.getSize();
+        fmalum.setLocation((tamescritorio.width - tamframe.width) / 2, (tamescritorio.height - tamframe.height) / 2);
+        //.------------------
+
+        fmalum.setVisible(true);
+        escritorio.moveToFront(fmalum);        // TODO add your handling code here:
+        fmalum.show();        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_mmMuestraAlxMatActionPerformed
+
+    private void mmabmMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmabmMatActionPerformed
+         FrMateria fmat = new FrMateria();
+        escritorio.add(fmat);
+        Dimension tamescritorio = escritorio.getSize();
+        Dimension tamframe = fmat.getSize();
+        fmat.setLocation((tamescritorio.width - tamframe.width) / 2, (tamescritorio.height - tamframe.height) / 2);
+        //.------------------
+
+        fmat.setVisible(true);
+        escritorio.moveToFront(fmat);        // TODO add your handling code here:
+        fmat.show();      
+    }//GEN-LAST:event_mmabmMatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,6 +318,8 @@ public class FrPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mInscripciones;
     private javax.swing.JMenu mMateria;
     private javax.swing.JMenuItem mlistadoalumnos;
+    private javax.swing.JMenuItem mmMuestraAlxMat;
+    private javax.swing.JMenuItem mmabmMat;
     private javax.swing.JMenuItem mmodificaNotas;
     private javax.swing.JMenuItem mmsalir;
     private javax.swing.JMenu mnotas;
