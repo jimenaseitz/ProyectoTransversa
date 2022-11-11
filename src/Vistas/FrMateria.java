@@ -235,7 +235,10 @@ public class FrMateria extends javax.swing.JInternalFrame {
 
     private void BBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBuscarActionPerformed
     
-        if (!this.tIdMateria.getText().matches("[+-]?\\d*(\\.\\d+)?")) {
+        if (this.tIdMateria.getText().matches("[+-]?\\d*(\\.\\d+)?")) {
+            if (this.tIdMateria.getText().equals("")) {
+                this.tIdMateria.setText("0");
+            }
             aux = matd.buscarMateria(Integer.parseInt(this.tIdMateria.getText()));
             this.tIdMateria.setText(String.valueOf(aux.getId_materia()));
             this.tNombre.setText(aux.getNombre());
@@ -257,8 +260,12 @@ public class FrMateria extends javax.swing.JInternalFrame {
         if (!this.tIdMateria.getText().matches("[+-]?\\d*(\\.\\d+)?")) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un numero");
             this.tIdMateria.requestFocus();
-        }
+                
+            }
+          
+        
 
+    
 
     }//GEN-LAST:event_tIdMateriaFocusLost
 
@@ -279,7 +286,10 @@ public class FrMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tanioFocusLost
 
     private void BBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBorrarActionPerformed
-        if (!this.tIdMateria.getText().matches("[+-]?\\d*(\\.\\d+)?")) {
+        if (this.tIdMateria.getText().matches("[+-]?\\d*(\\.\\d+)?")) {
+         if (this.tIdMateria.getText().equals("")) {
+                this.tIdMateria.setText("0");
+            }   
             matd.borrarMateria(Integer.parseInt(this.tIdMateria.getText()));
 
     }//GEN-LAST:event_BBorrarActionPerformed
