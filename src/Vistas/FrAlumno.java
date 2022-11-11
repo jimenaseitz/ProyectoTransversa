@@ -61,6 +61,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         TxDNI = new javax.swing.JTextField();
         jDateFechaNacimiento = new com.toedter.calendar.JDateChooser();
+        BxSalir = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 255));
@@ -137,6 +138,11 @@ public class FrAlumno extends javax.swing.JInternalFrame {
             }
         });
 
+        TxLegajo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TxLegajoFocusLost(evt);
+            }
+        });
         TxLegajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxLegajoActionPerformed(evt);
@@ -144,6 +150,24 @@ public class FrAlumno extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setText("DNI");
+
+        TxDNI.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TxDNIFocusLost(evt);
+            }
+        });
+        TxDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxDNIActionPerformed(evt);
+            }
+        });
+
+        BxSalir.setText("SALIR");
+        BxSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BxSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,24 +181,18 @@ public class FrAlumno extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
                                 .addComponent(TxLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(BxGuardar)
-                                .addGap(18, 18, 18)
-                                .addComponent(BxBorrar)
-                                .addGap(14, 14, 14)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(BxBuscar)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(BxSalir)
+                                .addGap(32, 32, 32)
                                 .addComponent(BxActualizar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BxLimpiar)))
@@ -187,9 +205,6 @@ public class FrAlumno extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jDateFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BxEstado)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
@@ -208,7 +223,14 @@ public class FrAlumno extends javax.swing.JInternalFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(TxDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                                .addGap(95, 95, 95))))))
+                                .addGap(95, 95, 95))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(BxGuardar)
+                                    .addComponent(BxEstado))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BxBorrar)
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +267,8 @@ public class FrAlumno extends javax.swing.JInternalFrame {
                     .addComponent(BxGuardar)
                     .addComponent(BxBorrar)
                     .addComponent(BxActualizar)
-                    .addComponent(BxLimpiar))
+                    .addComponent(BxLimpiar)
+                    .addComponent(BxSalir))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -253,7 +276,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BxBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxBuscarActionPerformed
-
+         if (!this.TxLegajo.getText().matches(" [+-]?\\d*(\\.\\d+)?")) {
         Alumno alumno = al.buscarAlumno(Integer.parseInt(this.TxLegajo.getText()));
         this.TxApellido.setText(alumno.getApellido());
         this.TxNombre.setText(alumno.getNombre());
@@ -262,6 +285,9 @@ public class FrAlumno extends javax.swing.JInternalFrame {
         java.util.Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
         jDateFechaNacimiento.setDate(date);
         this.BxEstado.setSelected(alumno.getEstado());
+         } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el NUMERO de legajo");
+        }
 
 
     }//GEN-LAST:event_BxBuscarActionPerformed
@@ -293,7 +319,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TxApellidoActionPerformed
 
     private void TxLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxLegajoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_TxLegajoActionPerformed
 
     private void BxBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxBorrarActionPerformed
@@ -320,6 +346,32 @@ public class FrAlumno extends javax.swing.JInternalFrame {
         alumno.setFecha_nacimiento(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(jDateFechaNacimiento.getDate())));
         al.actualizarAlumno(alumno);
     }//GEN-LAST:event_BxActualizarActionPerformed
+
+    private void TxLegajoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxLegajoFocusLost
+        if (!this.TxLegajo.getText().matches("[+-]?\\d*(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero");
+            this.TxLegajo.requestFocus();
+        }else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el NUMERO de legajo");
+        }
+    }//GEN-LAST:event_TxLegajoFocusLost
+
+    private void TxDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxDNIFocusLost
+        if (!this.TxDNI.getText().matches("[+-]?\\d*(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero");
+            this.TxDNI.requestFocus();
+        }else {
+            JOptionPane.showMessageDialog(this, "el numero de dni no debe contener espacios ni puntos");
+        }
+    }//GEN-LAST:event_TxDNIFocusLost
+
+    private void TxDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxDNIActionPerformed
+
+    private void BxSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BxSalirActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_BxSalirActionPerformed
     private void limpiarCampo() {
 
         this.TxApellido.setText("");
@@ -339,6 +391,7 @@ public class FrAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox BxEstado;
     private javax.swing.JButton BxGuardar;
     private javax.swing.JButton BxLimpiar;
+    private javax.swing.JButton BxSalir;
     private javax.swing.JTextField TxApellido;
     private javax.swing.JTextField TxDNI;
     private javax.swing.JTextField TxLegajo;
